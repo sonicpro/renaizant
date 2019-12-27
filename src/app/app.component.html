@@ -1,0 +1,11 @@
+<nav class="header">
+  <div class="progress"
+    role="progressbar"
+    [attr.aria-valuenow]="step"
+    aria-valuemin="0"
+    [attr.aria-valuemax]="totalSteps"
+    [ngStyle]="{'width': (step / totalSteps) * 100 + '%'}">
+  </div>
+</nav>
+<!-- Check how to set a default route to landing-page.module to render it on start -->
+<router-outlet></router-outlet>

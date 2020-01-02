@@ -20,3 +20,40 @@
     opacity: 1;
   }
 }
+
+.wizard-card-modal {
+  height: 617px;
+  width: 564px;
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: #fff;
+  position: absolute;
+  color: #1e1e1e;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  .card-header {
+    box-sizing: border-box;
+    height: 183px;
+    width: 564px;
+    padding: 24px 48px 33px;
+    display: table;
+    border-bottom: 1px solid #f0f0f0;
+
+    .header-text {
+      height: 44px;
+      width: 468px;
+      font-size: 14px;
+      line-height: 22px;
+      display: table-cell;
+      vertical-align: bottom;
+    }
+
+    h4 {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 34px;
+      margin-bottom: 8px;
+    }
+  }
+}

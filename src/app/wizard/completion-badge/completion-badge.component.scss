@@ -3,8 +3,10 @@
   height: 51px;
   padding-top: 3px;
   position: absolute;
-  left: 144px;
+  right: 144px;
   top: 43px;
+  font-family: "Source Sans Pro";
+  color: #fff;
   &::after {
     content: " ";
     display: table;
@@ -27,19 +29,35 @@
       font-size: 12px;
       line-height: 30px;
       margin-top: -8px;
+      position: relative;
       &::before {
-        content: url("../../../assets/Default.svg")
+        position: absolute;
+        left: 25px;
+        top: 2px;
+        content: url("../../../assets/Default.svg");
       }
     }
   }
 
-  &.percentage {
-    float: right;
+  .percentage {
+    position: absolute;
+    right: 0;
+    top: 0;
     height: 48px;
     width: 56px;
-    color: #FFFFFF;
+    color: #fff;
     font-family: "Source Sans Pro";
     font-size: 24px;
     line-height: 48px;
+  }
+
+  .spacer {
+    height: 27px;
+    width: 2px;
+    opacity: 0.2;
+    background-color: #fff;
+    position: absolute;
+    left: 156px;
+    top: 13px;
   }
 }

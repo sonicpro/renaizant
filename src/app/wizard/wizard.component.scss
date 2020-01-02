@@ -1,0 +1,22 @@
+.header {
+  height: 144px;
+  background-image: url("../../assets/Full.svg");
+  background-size: 276px;
+  background-position: 144px 48px;
+  background-repeat: no-repeat;
+}
+
+.progress {
+  height: 2px;
+  border-radius: 12px;
+  background-color: #fff;
+  opacity: 0.1;
+
+  &.left {
+    position: relative;
+    top: -2px;
+    width: 250px;
+    background-color: #e61e50;
+    opacity: 1;
+  }
+}

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompletionBadgeComponent implements OnInit {
 
-  constructor(public isWizard: boolean = true) {}
+  constructor() {}
 
   ngOnInit() {
   }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CompletionBadgeComponent } from './completion-badge/completion-badge.component';
 
 @Component({
   selector: 'ren-wizard',

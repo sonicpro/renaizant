@@ -1,0 +1,27 @@
+.badge {
+  width: 220px;
+  height: 51px;
+  padding-top: 3px;
+
+  .step {
+    float: left;
+    width: 139px;
+    height: 26px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+
+    &.status {
+      height: 30px;
+      font-weight: normal;
+      opacity: 0.6;
+      font-size: 12px;
+      line-height: 30px;
+      margin-top: -8px;
+      &::before {
+        content: url("../../../assets/Default.svg")
+      }
+    }
+  }
+}

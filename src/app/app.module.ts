@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LandingPageModule } from './landing-page/landing-page.module';
+import { LandingPageModule, LandingPageComponent } from './landing-page';
 import { WizardModule } from './wizard/wizard.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,10 @@ import { WizardModule } from './wizard/wizard.module';
     BrowserModule,
     AppRoutingModule,
     LandingPageModule,
-    WizardModule
+    WizardModule,
+    RouterModule.forRoot([
+      { path: '', component: LandingPageComponent }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

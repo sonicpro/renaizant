@@ -5,20 +5,22 @@
 <div class="progress left"></div>
 <div class="wizard-card-modal">
   <div class="card-header">
-    <div class="header-title">{{ step.stepName }}</div>
+    <div class="header-title">{{ step.getStepName() }}</div>
     <div class="header-gauge">
-      <div class="marker" [ngClass]="'set': (getStepIndex() + 1) === 1"></div>
+      <div class="marker" [ngClass]="{ 'set': (step.getStepIndex() + 1) === 1 }"></div>
       <div class="line set"></div>
-      <div class="marker" [ngClass]="'set': (getStepIndex() + 1) === 2"></div>
+      <div class="marker" [ngClass]="{ 'set': (step.getStepIndex() + 1) === 2 }"></div>
       <div class="line"></div>
-      <div class="marker" [ngClass]="'set': (getStepIndex() + 1) === 3"></div>
+      <div class="marker" [ngClass]="{ 'set': (step.getStepIndex() + 1) === 3 }"></div>
       <div class="line"></div>
-      <div class="marker" [ngClass]="'set': (getStepIndex() + 1) === 4"></div>
+      <div class="marker" [ngClass]="{ 'set': (step.getStepIndex() + 1) === 4 }"></div>
     </div>
-    <div class="header-text">{{ step.headerText }}</div>
+    <div class="header-text">{{ step.getHeaderText() }}</div>
   </div>
-  <div class="card-body"></div>
+  <div class="card-body">
+    <div class="label"
+  </div>
   <div class="card-footer">
-    <button class="submit-button" (click)="advanceThroughWizard()"></button>
+    <button class="submit-button" (click)="step.advance()">{{ step.getButtonText() | uppercase }}</button>
   </div>
 </div>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 59.1 (101010) - https://sketch.com -->
+    <title>B50DBDF8-072E-46A4-AB67-373F4F57CFEC</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="01-organization-onboarding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="00-onb-org-s1-v1" transform="translate(-925.000000, -585.000000)" fill="#969696" fill-rule="nonzero">
+            <g id="form" transform="translate(438.000000, 235.000000)">
+                <g id="Input/Field/No-Label/Default-Industry" transform="translate(48.000000, 306.000000)">
+                    <g id="dropdown">
+                        <g id="input" transform="translate(0.000000, 26.000000)">
+                            <g id="Icon/Dropdown/Default" transform="translate(436.000000, 12.000000)">
+                                <path d="M11.2928932,6.29289322 C11.6834175,5.90236893 12.3165825,5.90236893 12.7071068,6.29289322 C13.0976311,6.68341751 13.0976311,7.31658249 12.7071068,7.70710678 L8.70710678,11.7071068 C8.31658249,12.0976311 7.68341751,12.0976311 7.29289322,11.7071068 L3.29289322,7.70710678 C2.90236893,7.31658249 2.90236893,6.68341751 3.29289322,6.29289322 C3.68341751,5.90236893 4.31658249,5.90236893 4.70710678,6.29289322 L8,9.58578644 L11.2928932,6.29289322 Z" id="icon"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

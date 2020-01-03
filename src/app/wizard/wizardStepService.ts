@@ -32,7 +32,8 @@ export class WizardStepService {
   ];
 
   constructor(
-    public stepIndex = 0
+    private stepIndex = 0,
+    private isCompleted = false
   ) { }
 
   getStepIndex(): number {
@@ -55,7 +56,15 @@ export class WizardStepService {
     return this.steps[this.stepIndex].canBeSkipped;
   }
 
-  advanceThoughWizard(): void {
-    this.stepIndex++;
+  advance(): void {
+    if (this.stepIndex !== this.steps.length - 1) {
+      this.stepIndex++;
+    } else if (!this.isCompleted) {
+      this.isCompleted = true;
+    }
+  }
+
+  isAlreadyCompleted(): boolean {
+    return this.isCompleted;
   }
 }

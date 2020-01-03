@@ -1,3 +1,9 @@
+%clearfix {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
 .header {
   height: 144px;
   background-image: url("../../assets/Full.svg");
@@ -24,19 +30,23 @@
 .wizard-card-modal {
   height: 617px;
   width: 564px;
+  text-align: left;
   font-family: "Source Sans Pro", sans-serif;
   background-color: #fff;
+  border-radius: 4px;
   position: absolute;
   color: #1e1e1e;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  flex-direction: column;
 
   .card-header {
     box-sizing: border-box;
     height: 183px;
     width: 564px;
-    padding: 24px 48px 33px;
+    padding: 24px 48px 32px;
     display: table;
     border-bottom: 1px solid #f0f0f0;
 
@@ -45,15 +55,81 @@
       width: 468px;
       font-size: 14px;
       line-height: 22px;
-      display: table-cell;
+      display: table-row;
       vertical-align: bottom;
     }
 
-    h4 {
+    .header-title {
       font-weight: 600;
       font-size: 22px;
       line-height: 34px;
       margin-bottom: 8px;
+    }
+
+    .header-gauge {
+      width: 176px;
+      height: 24px;
+
+      .marker {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #e6e6e6;
+        float: left;
+        margin-top: 8px;
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
+
+        &.set {
+          background-color: #dc1e50;
+        }
+      }
+
+      .line {
+        height: 1px;
+        width: 32px;
+        background-color: #e6e6e6;
+        float: left;
+        margin: 12px 8px auto auto;
+      }
+
+      &::after {
+        @extend %clearfix
+      }
+    }
+  }
+
+  .card-body {
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+  }
+
+  .card-footer {
+    box-sizing: border-box;
+    height: 64px;
+    width: 564px;
+    border-radius: 0 0 4px 4px;
+    background-color: #fafafa;
+    padding: 16px;
+
+    .submit-button {
+      float: right;
+      height: 32px;
+      width: 120px;
+      border-radius: 4px;
+      border: none;
+      color: #ffffff;
+      background-color: #dc1e50;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 18px;
+      text-align: center;
+      vertical-align: center;
+    }
+
+    &::after {
+      @extend %clearfix
     }
   }
 }

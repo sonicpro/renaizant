@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WizardStepService } from './wizardStepService';
 
 @Component({
   selector: 'ren-wizard',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WizardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public step: WizardStepService) { }
 
   ngOnInit() {
   }

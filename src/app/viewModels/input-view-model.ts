@@ -5,6 +5,6 @@ export class InputViewModel {
     public type: InputType,
     public label: string,
     public hint: string,
-    public isRequired: = false
+    public isRequired: boolean = false
   ) { }
 }

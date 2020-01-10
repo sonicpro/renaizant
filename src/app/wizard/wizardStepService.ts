@@ -40,6 +40,10 @@ export class WizardStepService {
     return this.stepIndex;
   }
 
+  getNumberOfSteps(): number {
+    return this.steps.length;
+  }
+
   getStepName(): string {
     return this.steps[this.stepIndex].stepName;
   }

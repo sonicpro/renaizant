@@ -2,18 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LandingPageModule, LandingPageComponent } from './landing-page';
-import { RouterModule } from '@angular/router';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    LandingPageModule,
-    RouterModule.forRoot([ { path: '', component: LandingPageComponent } ])
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

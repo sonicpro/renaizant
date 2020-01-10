@@ -10,8 +10,6 @@ export class LandingPageComponent implements OnInit {
   text: string;
   inputValue: string;
 
-  constructor() { }
-
   ngOnInit() {
     this.title = 'Welcome!';
     this.text = `Please tell us about your organization.<br />

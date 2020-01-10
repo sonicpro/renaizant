@@ -10,8 +10,6 @@ export class CompletionBadgeComponent implements OnInit {
   completionNotice: string;
   percentage: number;
 
-  constructor() {}
-
   ngOnInit() {
     this.profileDescription = 'Organization profile';
     this.completionNotice = 'Not enough to start';

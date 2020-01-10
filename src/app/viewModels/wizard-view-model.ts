@@ -1,8 +1,18 @@
 export class WizardViewModel {
+  stepName: string;
+  headerText: string;
+  buttonText: string;
+  canBeSkipped: boolean;
+
   constructor(
-    public stepName: string,
-    public headerText: string,
-    public buttonText: string,
-    public canBeSkipped = false
-  ) { }
+    stepName: string,
+    headerText: string,
+    buttonText: string,
+    canBeSkipped = false
+  ) {
+    this.stepName = stepName;
+    this.headerText = headerText;
+    this.buttonText = buttonText;
+    this.canBeSkipped = canBeSkipped;
+  }
 }

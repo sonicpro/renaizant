@@ -7,9 +7,18 @@ import { WizardStepService } from './wizardStepService';
   styleUrls: ['./wizard.component.scss']
 })
 export class WizardComponent implements OnInit {
+  step: WizardStepService;
+  markers: Array<{}>; // contains empty objects, only indices are uses in isCurrent()
 
-  constructor(public step: WizardStepService) { }
+  constructor(step: WizardStepService) {
+    this.step = step;
+  }
 
-  ngOnInit() {
+  isCurrentStep(index: number): boolean {
+    return (this.step.getStepIndex()) === index;
+  }
+
+  ngOnInit(): void {
+    this.markers = new Array(this.step.getNumberOfSteps());
   }
 }

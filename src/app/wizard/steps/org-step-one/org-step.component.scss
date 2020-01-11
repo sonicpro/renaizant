@@ -1,0 +1,107 @@
+@mixin border {
+  box-sizing: border-box;
+  min-height: 40px;
+  border: 1px solid #969696;
+  border-radius: 4px;
+}
+
+:host {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+}
+
+.card-body {
+  padding: 32px 48px 0;
+  color: #1e1e1e;
+
+  .dropdown {
+    margin: 0 0 25px;
+
+    > dt {
+      height: 26px;
+      vertical-align: middle;
+    }
+
+    label {
+      height: 26px;
+      line-height: 22px;
+      font-size: 14px;
+    }
+
+    &.required dt label:after {
+      padding-left: 5px;
+      color: #cb2431;
+      content: "*";
+    }
+
+    > dd {
+      margin: 0;
+      @include border();
+      height: 41px;
+      width: 100%;
+      background-color: inherit;
+      text-align: left;
+      font-size: 16px;
+      line-height: 26px;
+      padding: 7px 16px 8px;
+
+      .container {
+        display: flex;
+        justify-content: center;
+
+        > div {
+          vertical-align: top;
+          flex: 1 0 auto;
+        }
+        > .dropdown-toggle {
+          display: inline-block;
+          margin-left: 0.255em;
+          vertical-align: 0.255em;
+          content: url("../../../../assets/ArrowDown.svg");
+          flex: 0 0 10px;
+        }
+      }
+
+      .drawer li {
+        border-bottom: 1px solid gray;
+        border-left: 1px solid gray;
+        border-right: 1px solid gray;
+        width: 195px;
+        height: 16px;
+        padding: 5px;
+        background-color: white;
+        cursor: pointer;
+        list-style-type: none;
+      }
+
+      .drawer li:hover {
+        background-color: #607d8b;
+      }
+
+      .drawer li a {
+        color: #888;
+        display: block;
+        text-decoration: none;
+      }
+
+      .drawer li a:hover {
+        color: white;
+      }
+      .drawer li a:active {
+        color: white;
+      }
+
+      ul.drawer {
+        margin-top: 0;
+        padding-left: 0;
+      }
+    }
+  }
+
+  .title-copy {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    margin: 7px 0 16px;
+  }
+}

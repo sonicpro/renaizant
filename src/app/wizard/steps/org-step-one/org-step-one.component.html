@@ -1,0 +1,39 @@
+<div class="card-body">
+  <dl class="dropdown required">
+    <dt class="input-label">
+      <label autocapitalize="off" maxlength="100" required="required" for="language">{{ languageLabel }}</label>
+    </dt>
+    <dd>
+      <div class="container">
+        <div>{{ languages[0] }}</div>
+        <div class="dropdown-toggle"></div>
+      </div>
+      <ul class="drawer">
+        <li *ngFor="let language of languages">
+          <a href="#">
+            {{ language }}
+          </a>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <dl class="dropdown required">
+    <dt class="input-label">
+      <label autocapitalize="off" maxlength="100" required="required" for="language">{{ languageLabel }}</label>
+    </dt>
+    <dd>
+      <div class="container">
+        <div>{{ timeZones[0] }}</div>
+        <div class="dropdown-toggle"></div>
+      </div>
+      <ul class="drawer" *ngIf="timeZonesExpanded">
+        <li *ngFor="let timeZone of timeZones">
+          <a href="#">
+            {{ timeZone }}
+          </a>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <div class="copy-title">{{ subTitle }}</div>
+</div>

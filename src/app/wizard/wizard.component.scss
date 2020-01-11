@@ -4,13 +4,6 @@
   clear: both;
 }
 
-@mixin border {
-  box-sizing: border-box;
-  min-height: 40px;
-  border: 1px solid #969696;
-  border-radius: 4px;
-}
-
 .header {
   height: 144px;
   background-image: url("../../assets/Full.svg");
@@ -102,46 +95,6 @@
 
       &::after {
         @extend %clearfix;
-      }
-    }
-  }
-
-  .card-body {
-    -webkit-box-flex: 1;
-    flex: 1 1 auto;
-    padding: 22px 48px auto;
-
-    .wrapper {
-      :first-child {
-        margin-bottom: 25px;
-      }
-
-      :not(::first-child) {
-        margin-bottom: 24px;
-      }
-
-      .label {
-        height: 26px;
-        /* TODO required */
-      }
-
-      .input {
-        @include border();
-
-        > button {
-          height: 41px;
-
-          &.dropdown-toggle::after {
-            display: inline-block;
-            margin-left: 0.255em;
-            vertical-align: 0.255em;
-            content: url("../../assets/ArrowDown.svg");
-          }
-        }
-      }
-
-      textarea {
-        height: 120px;
       }
     }
   }

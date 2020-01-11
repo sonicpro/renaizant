@@ -4,11 +4,15 @@ import { WizardRoutingModule } from './wizard-routing.module';
 import { WizardComponent } from './wizard.component';
 import { CompletionBadgeComponent } from './completion-badge/completion-badge.component';
 import { WizardStepService } from './wizardStepService';
+import { OrgStepOneComponent } from './steps/org-step-one/org-step-one.component';
+import { OrgStepTwoComponent } from './steps/org-step-two/org-step-two.component';
 
 @NgModule({
   declarations: [
     WizardComponent,
-    CompletionBadgeComponent
+    CompletionBadgeComponent,
+    OrgStepOneComponent,
+    OrgStepTwoComponent
   ],
   imports: [
     CommonModule,

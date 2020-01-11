@@ -14,8 +14,7 @@
     </div>
     <div class="header-text">{{ step.getHeaderText() }}</div>
   </div>
-  <div class="card-body">
-  </div>
+  <ren-org-step-one *ngIf="step.getStepIndex() + 1 === 1"></ren-org-step-one>
   <div class="card-footer">
     <button type="button" class="submit-button" (click)="step.advance()">{{ step.getButtonText() | uppercase }}</button>
   </div>

@@ -8,7 +8,7 @@ import { WizardStepService } from './wizardStepService';
 })
 export class WizardComponent implements OnInit {
   step: WizardStepService;
-  markers: Array<{}>; // contains empty objects, only indices are uses in isCurrent()
+  markers: {}[]; // contains empty objects, only indices are uses in isCurrent()
 
   constructor(step: WizardStepService) {
     this.step = step;

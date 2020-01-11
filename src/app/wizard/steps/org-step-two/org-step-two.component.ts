@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ren-org-step-two',
   templateUrl: './org-step-two.component.html',
   styleUrls: ['../org-step.component.scss']
 })
-export class OrgStepTwoComponent implements OnInit {
+export class OrgStepTwoComponent {
+  organizationNameLabel = 'Organization Name';
+  organizationNameHint = 'Enter organization name';
 
-  constructor() { }
+  industryLabel = 'Industry';
+  industryHint = 'Select Industry';
+  industries = [
+    'Manufacturing',
+    'Production',
+    'Mining',
+    'Agriculture',
+    'Construction'
+  ];
 
-  ngOnInit() {
-  }
-
+  descriptionLabel = 'Description';
+  descriptionHint = 'Fill organization description';
 }

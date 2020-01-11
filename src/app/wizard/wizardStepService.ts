@@ -56,8 +56,12 @@ export class WizardStepService {
     return this.steps[this.stepIndex].buttonText;
   }
 
-  isSkipEnabled(): boolean {
+  allowSkipOver(): boolean {
     return this.steps[this.stepIndex].canBeSkipped;
+  }
+
+  hasBackButton(): boolean {
+    return this.stepIndex !== 0;
   }
 
   advance(): void {
@@ -65,6 +69,14 @@ export class WizardStepService {
       this.stepIndex++;
     } else if (!this.isCompleted) {
       this.isCompleted = true;
+    }
+  }
+
+  retreat(): void {
+    if (this.isCompleted) {
+      return;
+    } else {
+      this.stepIndex--;
     }
   }
 

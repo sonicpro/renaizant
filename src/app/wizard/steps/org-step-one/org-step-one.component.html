@@ -5,13 +5,13 @@
     </dt>
     <dd>
       <div class="container">
-        <div #langSelected>{{ languages[0] }}</div>
+        <div>{{ language }}</div>
         <div class="dropdown-toggle" (click)="languagesExpanded=true"></div>
       </div>
       <ul class="drawer" *ngIf="languagesExpanded">
-        <li *ngFor="let language of languages">
-          <a href="#" (click)="langSelected.innerText=$event.target.innerText; languagesExpanded=false; $event.preventDefault();">
-            {{ language }}
+        <li *ngFor="let languageItem of languages">
+          <a (click)="language=$event.target.innerText; languagesExpanded=false; $event.preventDefault();">
+            {{ languageItem }}
           </a>
         </li>
       </ul>
@@ -23,13 +23,13 @@
     </dt>
     <dd>
       <div class="container">
-        <div #timeZoneSelected>{{ timeZones[0] }}</div>
+        <div>{{ timeZone }}</div>
         <div class="dropdown-toggle" (click)="timeZonesExpanded=true"></div>
       </div>
       <ul class="drawer" *ngIf="timeZonesExpanded">
-        <li *ngFor="let timeZone of timeZones">
-          <a href="#" (click)="timeZoneSelected.innerText=$event.target.innerText; timeZonesExpanded=false; $event.preventDefault();">
-            {{ timeZone }}
+        <li *ngFor="let timeZoneItem of timeZones">
+          <a (click)="timeZone=$event.target.innerText; timeZonesExpanded=false;">
+            {{ timeZoneItem }}
           </a>
         </li>
       </ul>
@@ -43,14 +43,13 @@
       </dt>
       <dd>
         <div class="container">
-          <div #workHoursStart>{{ timePickerMock[0] }}</div>
+          <div>{{ workHoursStart }}</div>
           <div class="dropdown-toggle" (click)="workHoursStartExpanded=true"></div>
         </div>
         <div class="scroll-container">
           <ul class="drawer" *ngIf="workHoursStartExpanded">
             <li *ngFor="let time of timePickerMock">
-              <a href="#"
-                (click)="workHoursStart.innerText=$event.target.innerText; workHoursStartExpanded=false; $event.preventDefault();">
+              <a (click)="workHoursStart=$event.target.innerText; workHoursStartExpanded=false;">
                 {{ time }}
               </a>
             </li>
@@ -64,14 +63,13 @@
       </dt>
       <dd>
         <div class="container">
-          <div #workHoursEnd>{{ timePickerMock[0] }}</div>
+          <div>{{ workHoursEnd }}</div>
           <div class="dropdown-toggle" (click)="workHoursEndExpanded=true"></div>
         </div>
         <div class="scroll-container">
           <ul class="drawer" *ngIf="workHoursEndExpanded">
             <li *ngFor="let time of timePickerMock">
-              <a href="#"
-                (click)="workHoursEnd.innerText=$event.target.innerText; workHoursEndExpanded=false; $event.preventDefault();">
+              <a (click)="workHoursEnd=$event.target.innerText; workHoursEndExpanded=false;">
                 {{ time }}
               </a>
             </li>

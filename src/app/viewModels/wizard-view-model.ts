@@ -1,8 +1,11 @@
+import { StepState } from '../wizard/step-state';
+
 export class WizardViewModel {
   stepName: string;
   headerText: string;
   buttonText: string;
   canBeSkipped: boolean;
+  stepState: StepState = {};
 
   constructor(
     stepName: string,

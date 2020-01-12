@@ -52,8 +52,16 @@ export class WizardStepService {
     return this.steps[this.stepIndex].headerText;
   }
 
-  getButtonText(): string {
+  getNextButtonText(): string {
     return this.steps[this.stepIndex].buttonText;
+  }
+
+  getBackButtonText(): string {
+    return 'Back';
+  }
+
+  getSkipButtonText(): string {
+    return 'Skip this step';
   }
 
   allowSkipOver(): boolean {
@@ -82,5 +90,17 @@ export class WizardStepService {
 
   isAlreadyCompleted(): boolean {
     return this.isCompleted;
+  }
+
+  getItem(key: string) {
+    if (key in this.steps[this.stepIndex].stepState) {
+      return this.steps[this.stepIndex].stepState[key];
+    } else {
+      return null;
+    }
+  }
+
+  setItem(key: string, value: any) {
+    this.steps[this.stepIndex].stepState[key] = value;
   }
 }

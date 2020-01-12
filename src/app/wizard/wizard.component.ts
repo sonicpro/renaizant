@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { WizardStepService } from './wizardStepService';
+import { OrgStepOneComponent, OrgStepTwoComponent } from './steps';
 
 @Component({
   selector: 'ren-wizard',
@@ -7,8 +8,15 @@ import { WizardStepService } from './wizardStepService';
   styleUrls: ['./wizard.component.scss']
 })
 export class WizardComponent implements OnInit {
-  step: WizardStepService;
   markers: {}[]; // contains empty objects, only indices are uses in isCurrent()
+
+  private step: WizardStepService;
+
+  @ViewChild(OrgStepOneComponent, { static: false })
+  private readonly stepOne: OrgStepOneComponent;
+
+  @ViewChild(OrgStepTwoComponent, { static: false })
+  private readonly stepTwo: OrgStepTwoComponent;
 
   constructor(step: WizardStepService) {
     this.step = step;
@@ -20,5 +28,29 @@ export class WizardComponent implements OnInit {
 
   ngOnInit(): void {
     this.markers = new Array(this.step.getNumberOfSteps());
+  }
+
+  advance(): void {
+    switch (this.step.getStepIndex()) {
+      case 0:
+        this.stepOne.saveState();
+        this.step.advance();
+        break;
+        case 1:
+          // this.stepTwo.saveState();
+          this.step.advance();
+    }
+  }
+
+  retreat(): void {
+    switch (this.step.getStepIndex()) {
+      case 0:
+        this.stepOne.saveState();
+        this.step.retreat();
+        break;
+        case 1:
+          // this.stepTwo.saveState();
+          this.step.retreat();
+    }
   }
 }

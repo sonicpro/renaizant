@@ -53,7 +53,7 @@
       line-height: 26px;
       padding: 7px 16px 8px;
 
-      > input {
+      input {
         font-family: inherit;
         font-size: inherit;
         border: none;
@@ -80,7 +80,7 @@
         display: flex;
         justify-content: center;
 
-        > div {
+        > input {
           vertical-align: top;
           flex: 1 0 auto;
         }
@@ -113,6 +113,7 @@
         color: #888;
         display: block;
         text-decoration: none;
+        height: 100%;
       }
 
       .drawer li a:hover {

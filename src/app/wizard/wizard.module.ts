@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WizardRoutingModule } from './wizard-routing.module';
+import { FormsModule }   from '@angular/forms';
 import { WizardComponent } from './wizard.component';
 import { CompletionBadgeComponent } from './completion-badge/completion-badge.component';
 import { WizardStepService } from './wizardStepService';
@@ -16,6 +17,7 @@ import { OrgStepTwoComponent } from './steps/org-step-two/org-step-two.component
   ],
   imports: [
     CommonModule,
+    FormsModule,
     WizardRoutingModule
   ],
   providers: [ WizardStepService ]

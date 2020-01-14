@@ -14,10 +14,10 @@
     </div>
     <div class="header-text">{{ step.getHeaderText() }}</div>
   </div>
-  <ren-org-step-one *ngIf="step.getStepIndex() + 1 === 1"></ren-org-step-one>
+  <ren-org-step-one *ngIf="step.getStepIndex() + 1 === 1" (isValid)="setButtonState($event)"></ren-org-step-one>
   <ren-org-step-two *ngIf="step.getStepIndex() + 1 === 2"></ren-org-step-two>
   <div class="card-footer">
-    <button type="button" class="button primary" (click)="advance()" [class.disabled]="">{{ step.getNextButtonText() | uppercase }}</button>
+    <button type="button" class="button primary" (click)="advance()" [disabled]="!nextIsEnabled">{{ step.getNextButtonText() | uppercase }}</button>
     <button type="button" class="button" (click)="retreat()" *ngIf="step.hasBackButton()">{{ step.getBackButtonText() | uppercase }}</button>
     <button type="button" class="button skip" *ngIf="step.allowSkipOver()">{{ step.getSkipButtonText() | uppercase }}</button>
   </div>

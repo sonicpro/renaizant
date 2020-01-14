@@ -9,6 +9,7 @@ import { OrgStepOneComponent, OrgStepTwoComponent } from './steps';
 })
 export class WizardComponent implements OnInit {
   markers: {}[]; // contains empty objects, only indices are uses in isCurrent()
+  nextIsEnabled: boolean;
 
   private step: WizardStepService;
 
@@ -52,5 +53,9 @@ export class WizardComponent implements OnInit {
           // this.stepTwo.saveState();
           this.step.retreat();
     }
+  }
+
+  setButtonState(isFormValid: boolean): void {
+    this.nextIsEnabled = isFormValid;
   }
 }

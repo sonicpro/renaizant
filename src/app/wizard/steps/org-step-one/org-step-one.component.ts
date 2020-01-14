@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { WizardStepService } from '../../wizardStepService';
 
 @Component({
@@ -6,7 +7,7 @@ import { WizardStepService } from '../../wizardStepService';
   templateUrl: './org-step-one.component.html',
   styleUrls: ['../org-step.component.scss']
 })
-export class OrgStepOneComponent implements OnInit {
+export class OrgStepOneComponent implements OnInit, AfterViewInit {
   language: string;
   languages: string[] = [
     '',
@@ -42,10 +43,14 @@ export class OrgStepOneComponent implements OnInit {
     '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM',
     '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM'
   ];
+
+  @Output() public isValid: EventEmitter<boolean> = new EventEmitter();
+
   private readonly languageStateKey = 'language';
   private readonly timeZoneStateKey = 'timeZone';
   private readonly workHoursStartStateKey = 'workHoursStart';
   private readonly workHoursEndStateKey = 'workHoursEnd';
+  @ViewChild('admissionForm', { static: false }) public theForm: NgForm;
 
   constructor(private readonly step: WizardStepService) {
   }
@@ -55,6 +60,14 @@ export class OrgStepOneComponent implements OnInit {
     this.timeZone = this.step.getItem(this.timeZoneStateKey) || this.timeZones[1];
     this.workHoursStart = this.step.getItem(this.workHoursStartStateKey) || this.timePickerMock[1];
     this.workHoursEnd = this.step.getItem(this.workHoursEndStateKey) || this.timePickerMock[1];
+  }
+
+  ngAfterViewInit(): void {
+    this.revalidate();
+  }
+
+  revalidate(): void {
+    this.isValid.emit(this.theForm.form.valid);
   }
 
   saveState(): void {

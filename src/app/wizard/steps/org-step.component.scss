@@ -42,7 +42,7 @@
     > dd {
       margin: 0;
       box-sizing: border-box;
-      min-height: 40px;
+      min-height: 41px;
       border: 1px solid #969696;
       border-radius: 4px;
       height: 41px;
@@ -76,68 +76,34 @@
       }
 
       .container {
-        min-height: 26px;
         display: flex;
         justify-content: center;
 
-        > input {
-          vertical-align: top;
+        > select {
           flex: 1 0 auto;
+          font-family: inherit;
+          font-size: inherit;
+          border: none;
+          outline: none;
         }
+
         > .dropdown-toggle {
-          display: inline-block;
-          margin-left: 0.255em;
-          vertical-align: 0.255em;
           content: url("../../../assets/ArrowDown.svg");
           flex: 0 0 10px;
           cursor: pointer;
+          margin-top: 2px;
         }
-      }
-
-      .drawer li {
-        border-bottom: 1px solid gray;
-        border-left: 1px solid gray;
-        border-right: 1px solid gray;
-        height: 16px;
-        padding: 5px;
-        background-color: white;
-        cursor: pointer;
-        list-style-type: none;
-      }
-
-      .drawer li:hover {
-        background-color: #607d8b;
-      }
-
-      .drawer li a {
-        color: #888;
-        display: block;
-        text-decoration: none;
-        height: 100%;
-      }
-
-      .drawer li a:hover {
-        color: white;
-      }
-      .drawer li a:active {
-        color: white;
-      }
-
-      ul.drawer {
-        margin-top: 0;
-        padding-left: 0;
-        position: relative;
-        z-index: 1;
-      }
-
-      .scroll-container {
-        max-height: 135px;
-        overflow: hidden auto;
       }
     }
 
     &.half-width {
       flex: 0 0 218px;
+
+      > dd {
+        min-height: 40px;
+        height: 40px;
+        padding: 7px 16px 7px;
+      }
     }
   }
 

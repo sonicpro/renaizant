@@ -16,7 +16,6 @@ export class OrgStepOneComponent implements OnInit, AfterViewInit {
     'Ukrainian'
   ];
   languageLabel = 'Language';
-  languagesExpanded = false;
 
   timeZone: string;
   timeZones: string[] = [
@@ -25,17 +24,14 @@ export class OrgStepOneComponent implements OnInit, AfterViewInit {
     '(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallin, Vilnius'
   ];
   timeZonesLabel = 'Time zone';
-  timeZonesExpanded = false;
 
   subTitle = 'Work hours';
 
   workHoursStart: string;
   workHoursStartLabel = 'From';
-  workHoursStartExpanded = false;
 
   workHoursEnd: string;
   workHoursEndLabel = 'To';
-  workHoursEndExpanded = false;
 
   timePickerMock = [
     '', '12:00 AM', '1:00 AM', '2:00 AM', '3:00 AM', '4:00 AM', '5:00 AM',

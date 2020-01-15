@@ -1,80 +1,80 @@
 <div class="card-body">
   <form #admissionForm="ngForm">
     <dl class="input required">
-      <dt class="input-label">
-        <label autocapitalize="off" maxlength="100" required="required">{{ languageLabel }}</label>
+      <dt>
+        <label for="language">{{ languageLabel }}</label>
       </dt>
       <dd>
         <div class="container">
-          <input [(ngModel)]="language" required name="language" (change)="revalidate()" />
-          <div class="dropdown-toggle" (click)="languagesExpanded=true"></div>
-        </div>
-        <ul class="drawer" *ngIf="languagesExpanded">
-          <li *ngFor="let languageItem of languages">
-            <a (click)="language=$event.target.innerText; languagesExpanded=false; $event.preventDefault();">
+          <select [(ngModel)]="language"
+            id="language"
+            required
+            name="language"
+            (change)="revalidate()">
+            <option *ngFor="let languageItem of languages" [value]="languageItem">
               {{ languageItem }}
-            </a>
-          </li>
-        </ul>
+            </option>
+          </select>
+          <div class="dropdown-toggle"></div>
+        </div>
       </dd>
     </dl>
     <dl class="input required last-in-group">
-      <dt class="input-label">
-        <label autocapitalize="off" maxlength="100" required="required">{{ timeZonesLabel }}</label>
+      <dt>
+        <label for="time-zone">{{ timeZonesLabel }}</label>
       </dt>
       <dd>
         <div class="container">
-          <input [(ngModel)]="timeZone" required name="timeZone" (change)="revalidate()" />
-          <div class="dropdown-toggle" (click)="timeZonesExpanded=true"></div>
-        </div>
-        <ul class="drawer" *ngIf="timeZonesExpanded">
-          <li *ngFor="let timeZoneItem of timeZones">
-            <a (click)="timeZone=$event.target.innerText; timeZonesExpanded=false;">
+          <select [(ngModel)]="timeZone"
+            id="time-zone"
+            required
+            name="timeZone"
+            (change)="revalidate()">
+            <option *ngFor="let timeZoneItem of timeZones" [value]="timeZoneItem">
               {{ timeZoneItem }}
-            </a>
-          </li>
-        </ul>
+            </option>
+          </select>
+          <div class="dropdown-toggle"></div>
+        </div>
       </dd>
     </dl>
     <p class="title-copy">{{ subTitle }}</p>
     <div class="half-width-inputs">
       <dl class="input required half-width">
-        <dt class="input-label">
-          <label autocapitalize="off" maxlength="100" required="required">{{ workHoursStartLabel }}</label>
+        <dt>
+          <label for="work-hours-start">{{ workHoursStartLabel }}</label>
         </dt>
         <dd>
           <div class="container">
-            <input [(ngModel)]="workHoursStart" required name="workHoursStart" (change)="revalidate()" />
-            <div class="dropdown-toggle" (click)="workHoursStartExpanded=true"></div>
-          </div>
-          <div class="scroll-container">
-            <ul class="drawer" *ngIf="workHoursStartExpanded">
-              <li *ngFor="let time of timePickerMock">
-                <a (click)="workHoursStart=$event.target.innerText; workHoursStartExpanded=false;">
-                  {{ time }}
-                </a>
-              </li>
-            </ul>
+            <select [(ngModel)]="workHoursStart"
+              id="work-hours-start"
+              required
+              name="workHoursStart"
+              (change)="revalidate()">
+              <option *ngFor="let time of timePickerMock" [value]="time">
+                {{ time }}
+              </option>
+            </select>
+            <div class="dropdown-toggle"></div>
           </div>
         </dd>
       </dl>
       <dl class="input required half-width">
-        <dt class="input-label">
-          <label autocapitalize="off" maxlength="100" required="required">{{ workHoursEndLabel }}</label>
+        <dt>
+          <label for="work-hours-end">{{ workHoursEndLabel }}</label>
         </dt>
         <dd>
           <div class="container">
-            <input [(ngModel)]="workHoursEnd" required name="workHoursEnd" (change)="revalidate()" />
-            <div class="dropdown-toggle" (click)="workHoursEndExpanded=true"></div>
-          </div>
-          <div class="scroll-container">
-            <ul class="drawer" *ngIf="workHoursEndExpanded">
-              <li *ngFor="let time of timePickerMock">
-                <a (click)="workHoursEnd=$event.target.innerText; workHoursEndExpanded=false;">
-                  {{ time }}
-                </a>
-              </li>
-            </ul>
+            <select [(ngModel)]="workHoursEnd"
+              id="work-hours-end"
+              required
+              name="workHoursEnd"
+              (change)="revalidate()">
+              <option *ngFor="let time of timePickerMock" [value]="time">
+                {{ time }}
+              </option>
+            </select>
+            <div class="dropdown-toggle"></div>
           </div>
         </dd>
       </dl>

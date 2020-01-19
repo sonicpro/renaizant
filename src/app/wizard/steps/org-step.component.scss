@@ -1,3 +1,7 @@
+@mixin disabled {
+  opacity: 0.3;
+}
+
 :host {
   -webkit-box-flex: 1;
   flex: 1 1 auto;
@@ -58,6 +62,10 @@
         font-size: inherit;
         border: none;
         outline: none;
+
+        &.disabled {
+          @include disabled;
+        }
       }
 
       &.text-area {
@@ -73,6 +81,10 @@
         height: 100%;
         font-size: inherit;
         font-family: inherit;
+
+        &.disabled {
+          @include disabled;
+        }
       }
 
       .container {

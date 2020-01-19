@@ -1,36 +1,46 @@
 <div class="card-body">
-  <dl class="input required">
-    <dt class="input-label">
-      <label autocapitalize="off" maxlength="100" required="required" for="organization-name">{{ organizationNameLabel }}</label>
-    </dt>
-    <dd>
-      <input id="organization-name" [placeholder]="organizationNameHint" type="text" />
-    </dd>
-  </dl>
-  <dl class="input required">
-    <dt class="input-label">
-      <label autocapitalize="off" maxlength="100" required="required">{{ industryLabel }}</label>
-    </dt>
-    <dd>
-      <div class="container">
-        <div #industrySelected>{{ industryHint }}</div>
-        <div class="dropdown-toggle" (click)="industriesExpanded=true"></div>
-      </div>
-      <ul class="drawer" *ngIf="industriesExpanded">
-        <li *ngFor="let industry of industries">
-          <a href="#" (click)="industrySelected.innerText=$event.target.innerText; industriesExpanded=false; $event.preventDefault();">
-            {{ industry }}
-          </a>
-        </li>
-      </ul>
-    </dd>
-  </dl>
-  <dl class="input">
-    <dt class="input-label">
-      <label autocapitalize="off" maxlength="100" required="required" for="organization-name">{{ descriptionLabel }}</label>
-    </dt>
-    <dd class="text-area">
-      <textarea rows="5" cols="50" [placeholder]="descriptionHint"></textarea>
-    </dd>
-  </dl>
+  <form #admissionForm="ngForm">
+    <dl class="input required">
+      <dt class="input-label">
+        <label for="organization-name">{{ organizationNameLabel }}</label>
+      </dt>
+      <dd>
+        <input
+          id="organization-name"
+          [placeholder]="organizationNameHint"
+          type="text"
+          (input)="revalidate()" />
+      </dd>
+    </dl>
+    <dl class="input required">
+      <dt class="input-label">
+        <label for="industry">{{ industryLabel }}</label>
+      </dt>
+      <dd>
+        <div class="container">
+          <select
+            id="industry"
+            retuired
+            min="1"
+            name="industry"
+            (change)="revalidate()">
+            <option *ngFor="let industry of industries"
+              [value]="industry.id"
+              [selected]="industry.id === 0">
+              {{ industry.text }}
+            </option>
+          </select>
+          <div class="dropdown-toggle"></div>
+        </div>
+      </dd>
+    </dl>
+    <dl class="input">
+      <dt class="input-label">
+        <label for="organization-name">{{ descriptionLabel }}</label>
+      </dt>
+      <dd class="text-area">
+        <textarea rows="5" cols="50" [placeholder]="descriptionHint"></textarea>
+      </dd>
+    </dl>
+  </form>
 </div>

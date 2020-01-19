@@ -1,7 +1,9 @@
-%clearfix {
-  content: " ";
-  display: table;
-  clear: both;
+@mixin clearfix {
+  &::after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
 }
 
 .header {
@@ -93,9 +95,7 @@
         margin: 12px 8px auto auto;
       }
 
-      &::after {
-        @extend %clearfix;
-      }
+      @include clearfix;
     }
   }
 
@@ -142,8 +142,6 @@
       }
     }
 
-    &::after {
-      @extend %clearfix;
-    }
+    @include clearfix;
   }
 }

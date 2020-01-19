@@ -11,7 +11,7 @@ export class WizardComponent implements OnInit {
   markers: {}[]; // contains empty objects, only indices are uses in isCurrent()
   nextIsEnabled: boolean;
 
-  private step: WizardStepService;
+  private readonly step: WizardStepService;
 
   @ViewChild(OrgStepOneComponent, { static: false })
   private readonly stepOne: OrgStepOneComponent;
@@ -37,9 +37,12 @@ export class WizardComponent implements OnInit {
         this.stepOne.saveState();
         this.step.advance();
         break;
-        case 1:
-          // this.stepTwo.saveState();
-          this.step.advance();
+      case 1:
+        this.stepTwo.saveState();
+        this.step.advance();
+        break;
+      default:
+        this.step.advance();
     }
   }
 
@@ -49,9 +52,12 @@ export class WizardComponent implements OnInit {
         this.stepOne.saveState();
         this.step.retreat();
         break;
-        case 1:
-          // this.stepTwo.saveState();
-          this.step.retreat();
+      case 1:
+        this.stepTwo.saveState();
+        this.step.retreat();
+        break;
+      default:
+        this.step.retreat();
     }
   }
 

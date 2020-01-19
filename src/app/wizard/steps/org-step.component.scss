@@ -1,5 +1,19 @@
-@mixin disabled {
+@mixin less-opaque {
   opacity: 0.3;
+}
+
+@mixin container {
+  margin: 0;
+box-sizing: border-box;
+border: 1px solid #969696;
+border-radius: 4px;
+height: 41px;
+width: 100%;
+background-color: inherit;
+text-align: left;
+font-size: 16px;
+line-height: 26px;
+padding: 7px 16px 8px;
 }
 
 :host {
@@ -8,82 +22,73 @@
 }
 
 .card-body {
-  padding: 32px 48px 0;
+  padding: 32px 48px 40px;
   color: #1e1e1e;
 
-  .input {
+  dl {
     margin: 0;
 
-    &:not(:last-of-type) {
+    dt {
+      height: 26px;
+      vertical-align: middle;
+
+      label {
+        height: 26px;
+        line-height: 22px;
+        font-size: 14px;
+
+        &[required]:after {
+          padding-left: 5px;
+          color: #dc1e50;
+          content: "*";
+        }
+      }
+    }
+
+    dd:not(:last-of-type) {
       margin-bottom: 25px;
     }
 
-    &:last-of-type {
+    dd:last-of-type {
       margin-bottom: 24px;
     }
 
-    &.last-in-group {
+    dd.last-in-group {
       margin: 0 0 43.07px;
     }
 
-    > dt {
-      height: 26px;
-      vertical-align: middle;
-    }
+    dd {
+      @include container;
 
-    label {
-      height: 26px;
-      line-height: 22px;
-      font-size: 14px;
-    }
+      &:not(:last-child) {
+        margin-bottom: 25px;
+      }
 
-    &.required dt label:after {
-      padding-left: 5px;
-      color: #dc1e50;
-      content: "*";
-    }
+      &:last-child {
+        margin-bottom: 24px;
+      }
 
-    > dd {
-      margin: 0;
-      box-sizing: border-box;
-      min-height: 41px;
-      border: 1px solid #969696;
-      border-radius: 4px;
-      height: 41px;
-      width: 100%;
-      background-color: inherit;
-      text-align: left;
-      font-size: 16px;
-      line-height: 26px;
-      padding: 7px 16px 8px;
+      &.last-in-group {
+        margin: 0 0 43.07px;
+      }
+
+      &.input {
+        height: 40px;
+      }
 
       input {
         font-family: inherit;
         font-size: inherit;
         border: none;
         outline: none;
-
-        &.disabled {
-          @include disabled;
-        }
-      }
-
-      &.text-area {
-        height: 120px;
-        padding-right: 8px;
-        padding-bottom: 8px;
-      }
-
-      > textarea {
-        border: none;
-        outline: none;
         width: 100%;
-        height: 100%;
-        font-size: inherit;
-        font-family: inherit;
 
-        &.disabled {
-          @include disabled;
+        &.ng-pristine {
+          @include less-opaque;
+        }
+
+        &.greyed-out {
+          @include less-opaque;
         }
       }
 
@@ -108,7 +113,42 @@
       }
     }
 
-    &.half-width {
+    .description {
+      @include container;
+      height: 120px;
+      padding-right: 8px;
+
+      textarea {
+        border: none;
+        outline: none;
+        width: 100%;
+        height: 100%;
+        font-size: inherit;
+        font-family: inherit;
+
+        &.ng-pristine {
+          @include less-opaque;
+        }
+
+        &.greyed-out {
+          @include less-opaque;
+        }
+      }
+    }
+
+    .title-copy {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 10.56px;
+      margin: 0 0 20.37px;
+    }
+  }
+
+  div.half-width-inputs {
+    display: flex;
+    justify-content: space-between;
+
+    dl {
       flex: 0 0 218px;
 
       > dd {
@@ -117,17 +157,5 @@
         padding: 7px 16px 7px;
       }
     }
-  }
-
-  .title-copy {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 10.56px;
-    margin: 0 0 20.37px;
-  }
-
-  div.half-width-inputs {
-    display: flex;
-    justify-content: space-between;
   }
 }

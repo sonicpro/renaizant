@@ -1,20 +1,21 @@
 <div class="card-body">
   <form #admissionForm="ngForm">
-    <dl class="input required">
-      <dt class="input-label">
-        <label for="organization-name">{{ organizationNameLabel }}</label>
+    <dl>
+      <dt>
+        <label required for="organization-name">{{ organizationNameLabel }}</label>
       </dt>
       <dd>
-        <input
+        <input [(ngModel)]="organizationName"
+          #organizationNameModel="ngModel"
+          name="organizationName"
           id="organization-name"
           [placeholder]="organizationNameHint"
           type="text"
-          (input)="revalidate()" />
+          (input)="revalidate()"
+          [class.greyed-out]="organizationNameModel.value === ''" />
       </dd>
-    </dl>
-    <dl class="input required">
-      <dt class="input-label">
-        <label for="industry">{{ industryLabel }}</label>
+      <dt>
+        <label required for="industry">{{ industryLabel }}</label>
       </dt>
       <dd>
         <div class="container">
@@ -33,14 +34,19 @@
           <div class="dropdown-toggle"></div>
         </div>
       </dd>
-    </dl>
-    <dl class="input">
-      <dt class="input-label">
+      <dt>
         <label for="organization-name">{{ descriptionLabel }}</label>
       </dt>
-      <dd class="text-area">
-        <textarea rows="5" cols="50" [placeholder]="descriptionHint"></textarea>
-      </dd>
+      <div class="description">
+        <textarea rows="5"
+          cols="50"
+          [(ngModel)]="description"
+          #descriptionModel="ngModel"
+          name="description"
+          [placeholder]="descriptionHint"
+          [class.greyed-out]="descriptionModel.value === ''">
+        </textarea>
+      </div>
     </dl>
   </form>
 </div>

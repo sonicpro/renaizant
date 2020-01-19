@@ -1,8 +1,8 @@
 <div class="card-body">
   <form #admissionForm="ngForm">
-    <dl class="input required">
+    <dl>
       <dt>
-        <label for="language">{{ languageLabel }}</label>
+        <label required for="language">{{ languageLabel }}</label>
       </dt>
       <dd>
         <div class="container">
@@ -18,12 +18,10 @@
           <div class="dropdown-toggle"></div>
         </div>
       </dd>
-    </dl>
-    <dl class="input required last-in-group">
       <dt>
-        <label for="time-zone">{{ timeZonesLabel }}</label>
+        <label required for="time-zone">{{ timeZonesLabel }}</label>
       </dt>
-      <dd>
+      <dd class="last-in-group">
         <div class="container">
           <select [(ngModel)]="timeZone"
             id="time-zone"
@@ -40,9 +38,9 @@
     </dl>
     <p class="title-copy">{{ subTitle }}</p>
     <div class="half-width-inputs">
-      <dl class="input required half-width">
+      <dl>
         <dt>
-          <label for="work-hours-start">{{ workHoursStartLabel }}</label>
+          <label required for="work-hours-start">{{ workHoursStartLabel }}</label>
         </dt>
         <dd>
           <div class="container">
@@ -59,9 +57,9 @@
           </div>
         </dd>
       </dl>
-      <dl class="input required half-width">
+      <dl>
         <dt>
-          <label for="work-hours-end">{{ workHoursEndLabel }}</label>
+          <label required for="work-hours-end">{{ workHoursEndLabel }}</label>
         </dt>
         <dd>
           <div class="container">

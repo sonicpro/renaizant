@@ -45,26 +45,14 @@ padding: 7px 16px 8px;
       }
     }
 
-    dd:not(:last-of-type) {
-      margin-bottom: 25px;
-    }
-
-    dd:last-of-type {
-      margin-bottom: 24px;
-    }
-
-    dd.last-in-group {
-      margin: 0 0 43.07px;
-    }
-
     dd {
       @include container;
 
-      &:not(:last-child) {
+      &:not(:last-of-type) {
         margin-bottom: 25px;
       }
 
-      &:last-child {
+      &:last-of-type {
         margin-bottom: 24px;
       }
 

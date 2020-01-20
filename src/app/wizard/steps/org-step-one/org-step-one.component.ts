@@ -50,10 +50,10 @@ export class OrgStepOneComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.language = this.step.getItem(this.languageStateKey) || this.languages[1];
-    this.timeZone = this.step.getItem(this.timeZoneStateKey) || this.timeZones[1];
-    this.workHoursStart = this.step.getItem(this.workHoursStartStateKey) || this.timePickerMock[1];
-    this.workHoursEnd = this.step.getItem(this.workHoursEndStateKey) || this.timePickerMock[1];
+    this.language = this.step.getItem(this.languageStateKey) || this.languages[0];
+    this.timeZone = this.step.getItem(this.timeZoneStateKey) || this.timeZones[0];
+    this.workHoursStart = this.step.getItem(this.workHoursStartStateKey) || this.timePickerMock[0];
+    this.workHoursEnd = this.step.getItem(this.workHoursEndStateKey) || this.timePickerMock[0];
   }
 
   ngAfterViewInit(): void {

@@ -6,28 +6,26 @@
       </dt>
       <dd class="input">
         <input [(ngModel)]="organizationName"
-          #organizationNameModel="ngModel"
           name="organizationName"
           id="organization-name"
+          required
           [placeholder]="organizationNameHint"
           type="text"
           (input)="revalidate()"
-          [class.greyed-out]="organizationNameModel.value === ''" />
+          [class.greyed-out]="!organizationName" />
       </dd>
       <dt>
         <label required for="industry">{{ industryLabel }}</label>
       </dt>
       <dd>
         <div class="container">
-          <select
+          <select [(ngModel)]="industry"
             id="industry"
-            retuired
-            min="1"
+            required
             name="industry"
             (change)="revalidate()">
             <option *ngFor="let industry of industries"
-              [value]="industry.id"
-              [selected]="industry.id === 0">
+              [value]="industry.id">
               {{ industry.text }}
             </option>
           </select>
@@ -35,16 +33,15 @@
         </div>
       </dd>
       <dt>
-        <label for="organization-name">{{ descriptionLabel }}</label>
+        <label for="description">{{ descriptionLabel }}</label>
       </dt>
       <div class="description">
         <textarea rows="5"
           cols="50"
           [(ngModel)]="description"
-          #descriptionModel="ngModel"
           name="description"
           [placeholder]="descriptionHint"
-          [class.greyed-out]="descriptionModel.value === ''">
+          [class.greyed-out]="!description">
         </textarea>
       </div>
     </dl>

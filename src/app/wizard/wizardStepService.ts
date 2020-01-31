@@ -92,11 +92,11 @@ export class WizardStepService {
     return this.isCompleted;
   }
 
-  getItem(key: string) {
+  getItem(key: string, defaultValue: any = null) {
     if (key in this.steps[this.stepIndex].stepState) {
       return this.steps[this.stepIndex].stepState[key];
     } else {
-      return null;
+      return defaultValue;
     }
   }
 

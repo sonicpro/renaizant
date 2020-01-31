@@ -8,7 +8,7 @@ import { OrgStepOneComponent, OrgStepTwoComponent } from './steps';
   styleUrls: ['./wizard.component.scss']
 })
 export class WizardComponent implements OnInit {
-  markers: {}[]; // contains empty objects, only indices are uses in isCurrent()
+  markers: {}[]; // contains empty objects, only indices are used in isCurrentStep()
   nextIsEnabled: boolean;
 
   private readonly step: WizardStepService;
@@ -48,10 +48,6 @@ export class WizardComponent implements OnInit {
 
   retreat(): void {
     switch (this.step.getStepIndex()) {
-      case 0:
-        this.stepOne.saveState();
-        this.step.retreat();
-        break;
       case 1:
         this.stepTwo.saveState();
         this.step.retreat();

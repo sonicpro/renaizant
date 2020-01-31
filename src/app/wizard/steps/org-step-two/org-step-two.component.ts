@@ -48,8 +48,8 @@ export class OrgStepTwoComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.organizationName = this.step.getItem(this.organizationNameStateKey);
-    this.industry = this.step.getItem(this.industryStateKey);
-    this.description = this.step.getItem(this.descriptionStateKey);
+    this.industry = this.step.getItem(this.industryStateKey, 0);
+    this.description = this.step.getItem(this.descriptionStateKey, '');
   }
 
   ngAfterViewInit(): void {
@@ -57,7 +57,7 @@ export class OrgStepTwoComponent implements OnInit, AfterViewInit {
   }
 
   revalidate(): void {
-    this.isValid.emit(this.theForm.valid);
+    this.isValid.emit(!this.theForm.pristine && this.theForm.valid && this.industry > 0);
   }
 
   saveState(): void {

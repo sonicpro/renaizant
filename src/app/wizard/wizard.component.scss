@@ -128,7 +128,7 @@
         opacity: 1;
         font-weight: bold;
 
-        &.disabled {
+        &[disabled] {
           opacity: 0.3;
         }
       }

@@ -43,7 +43,6 @@ export class OrgStepTwoComponent implements OnInit, AfterViewInit {
   private readonly descriptionStateKey = 'description';
 
   constructor(private readonly step: WizardStepService) {
-
   }
 
   ngOnInit(): void {

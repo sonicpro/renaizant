@@ -33,22 +33,24 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
   private readonly organizationCareerTracksStateKey: string = 'organizationCareerTracks';
   private readonly gradePerBandStateKey: string = 'gradePerBand';
   private readonly customGradeStateKey: string = 'customGrade';
+
+  private readonly organizationCareerTracksMock: string[] = [
+    'Individual Contributor',
+    'Managerial'
+  ];
+
   private readonly numberOfBandsChip: ChipWithValue = {
     name: 'Number of bands',
     value: 7
   };
-  private readonly organizationCareerTrackDefaults: string[] = [
-    'Individual Contributor',
-    'Managerial'
-  ];
 
   constructor(private readonly step: WizardStepService) {
   }
 
   ngOnInit() {
-    this.organizationCareerTracks = this.step.getItem(this.organizationCareerTracksStateKey, {
-      ...this.organizationCareerTrackDefaults
-    });
+    this.organizationCareerTracks = this.step.getItem(this.organizationCareerTracksStateKey, [
+      ...this.organizationCareerTracksMock
+    ]);
     this.gradePerBand = this.step.getItem(this.gradePerBandStateKey, [
       {
         name: 'Grade coding',

@@ -18,6 +18,7 @@ import { ChipWithValue } from '../../../interfaces';
 export class OrgStepThreeComponent implements OnInit, AfterViewInit {
   organizationCareerTracksHeading = 'Organization\'s career tracks';
   organizationCareerTracks: string[];
+  addCareerTrackText = 'Add career track';
 
   setupBandsAndGradesHeading = 'Set Up Bands and Grades';
   gradeRadios: string[] = [ 'Grade per band', 'Custom grade' ];
@@ -26,6 +27,7 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
 
   cusomGradeBandLabel = 'Band ';
   customGrade: ChipWithValue[];
+  addBandText = 'Add band';
 
   @Output() readonly isValid: EventEmitter<boolean> = new EventEmitter();
   @ViewChild('admissionForm', { static: false }) theForm: NgForm;

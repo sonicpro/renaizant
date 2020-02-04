@@ -9,6 +9,15 @@
         type="text"
         [value]="track" />
     </dd>
+    <div class="add-item">
+      <div class="button-container">
+        <div class="icon">
+          <div class="combined-shape">
+          </div>
+        </div>
+        {{ addCareerTrackText }}
+      </div>
+    </div>
     <form #admissionForm="ngForm">
       <dt>
         <label class="term-title">{{ setupBandsAndGradesHeading }}</label>
@@ -16,6 +25,15 @@
       <dd>
 
       </dd>
+      <div class="add-item">
+        <div class="button-container">
+          <div class="icon">
+            <div class="combined-shape">
+            </div>
+          </div>
+          {{ addBandText }}
+        </div>
+      </div>
     </form>
   </dl>
 </div>

@@ -5,7 +5,7 @@
         <label required for="language">{{ languageLabel }}</label>
       </dt>
       <dd>
-        <div class="container">
+        <div class="dropdown-container">
           <select [(ngModel)]="language"
             id="language"
             required
@@ -22,7 +22,7 @@
         <label required for="time-zone">{{ timeZonesLabel }}</label>
       </dt>
       <dd class="last-in-group">
-        <div class="container">
+        <div class="dropdown-container">
           <select [(ngModel)]="timeZone"
             id="time-zone"
             required
@@ -43,7 +43,7 @@
           <label required for="work-hours-start">{{ workHoursStartLabel }}</label>
         </dt>
         <dd>
-          <div class="container">
+          <div class="dropdown-container">
             <select [(ngModel)]="workHoursStart"
               id="work-hours-start"
               required
@@ -62,7 +62,7 @@
           <label required for="work-hours-end">{{ workHoursEndLabel }}</label>
         </dt>
         <dd>
-          <div class="container">
+          <div class="dropdown-container">
             <select [(ngModel)]="workHoursEnd"
               id="work-hours-end"
               required

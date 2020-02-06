@@ -86,6 +86,7 @@
         border: none;
         background-color: #fafafa;
         margin: 16px 0 0;
+        position: relative;
 
         + .chip {
           margin-top: 8px;
@@ -101,6 +102,31 @@
 
         input {
           background-color: inherit;
+
+          + .overlay {
+            position: absolute;
+            height: 26px;
+            top: 7px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0);
+
+            &:hover {
+              visibility: visible;
+            }
+
+            button {
+              border: none;
+              padding: 0;
+              background: 0 0;
+              cursor: pointer;
+              color: #626262;
+              font-size: 16px;
+              top: 3px;
+              position: absolute;
+              right: -20px;
+            }
+          }
         }
       }
 

@@ -73,6 +73,7 @@
       input {
         font-family: inherit;
         font-size: inherit;
+        color: inherit;
         border: none;
         outline: none;
         width: 100%;
@@ -98,33 +99,40 @@
 
         &:hover {
           background-color: #f0f0f0;
+          
+          input + .overlay {
+            display: block;
+          }
         }
 
         input {
           background-color: inherit;
+          cursor: pointer;
 
           + .overlay {
             position: absolute;
+            display: none;
             height: 26px;
             top: 7px;
             left: 0;
             width: 100%;
+            padding-right: 20px;
+            box-sizing: content-box;
             background-color: rgba(0, 0, 0, 0);
-
-            &:hover {
-              visibility: visible;
-            }
 
             button {
               border: none;
               padding: 0;
               background: 0 0;
               cursor: pointer;
-              color: #626262;
-              font-size: 16px;
-              top: 3px;
+              color: #969696;
+              height: 16px;
+              width: 16px;
+              vertical-align: middle;
+              font-size: 12px;
               position: absolute;
-              right: -20px;
+              top: 3px;
+              right: 0;
             }
           }
         }

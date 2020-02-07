@@ -8,6 +8,7 @@ import { WizardStepService } from './wizardStepService';
 import { OrgStepOneComponent } from './steps/org-step-one/org-step-one.component';
 import { OrgStepTwoComponent } from './steps/org-step-two/org-step-two.component';
 import { OrgStepThreeComponent } from './steps/org-step-three/org-step-three.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OrgStepThreeComponent } from './steps/org-step-three/org-step-three.com
   imports: [
     CommonModule,
     FormsModule,
-    WizardRoutingModule
+    WizardRoutingModule,
+    FontAwesomeModule
   ],
   providers: [ WizardStepService ]
 })

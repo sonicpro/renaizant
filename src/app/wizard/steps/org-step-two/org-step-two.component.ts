@@ -56,7 +56,7 @@ export class OrgStepTwoComponent implements OnInit, AfterViewInit {
   }
 
   revalidate(): void {
-    this.isValid.emit(!this.theForm.pristine && this.theForm.valid && this.industry > 0);
+    this.isValid.emit(this.theForm.valid && this.industry > 0);
   }
 
   saveState(): void {

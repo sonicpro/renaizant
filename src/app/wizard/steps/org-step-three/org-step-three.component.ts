@@ -7,8 +7,10 @@ import {
   EventEmitter
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { WizardStepService } from '../../wizardStepService';
 import { ChipWithValue } from '../../../interfaces';
+import { Chip } from '../../../interfaces/chip';
 
 @Component({
   selector: 'ren-org-step-three',
@@ -17,11 +19,12 @@ import { ChipWithValue } from '../../../interfaces';
 })
 export class OrgStepThreeComponent implements OnInit, AfterViewInit {
   organizationCareerTracksHeading = 'Organization\'s career tracks';
-  organizationCareerTracks: string[];
+  organizationCareerTracks: Chip[];
   addCareerTrackText = 'Add career track';
 
   setupBandsAndGradesHeading = 'Set Up Bands and Grades';
   gradeRadios: string[] = [ 'Grade per band', 'Custom grade' ];
+  faTrash = faTrash;
 
   gradePerBand: ChipWithValue[];
 
@@ -36,13 +39,13 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
   private readonly gradePerBandStateKey: string = 'gradePerBand';
   private readonly customGradeStateKey: string = 'customGrade';
 
-  private readonly organizationCareerTracksMock: string[] = [
-    'Individual Contributor',
-    'Managerial'
+  private readonly organizationCareerTracksMock: Chip[] = [
+    { text: 'Individual Contributor' },
+    { text: 'Managerial' }
   ];
 
   private readonly numberOfBandsChip: ChipWithValue = {
-    name: 'Number of bands',
+    text: 'Number of bands',
     value: 7
   };
 

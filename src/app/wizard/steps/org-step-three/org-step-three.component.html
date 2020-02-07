@@ -7,10 +7,11 @@
       <input
         autocomplete="off"
         type="text"
-        [value]="track" />
+        [value]="track.text"
+        disabled />
         <div class="overlay">
-          <button class="remove-item" type="button">
-            <i class="fa fa-trash-o"></i>
+          <button type="button">
+            <fa-icon [icon]="faTrash"></fa-icon>
           </button>
         </div>
     </dd>

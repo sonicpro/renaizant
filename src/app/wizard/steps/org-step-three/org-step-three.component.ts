@@ -50,7 +50,7 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
   ];
   private readonly bandChip: ChipWithValue = {
     text: 'Number of bands',
-    value: 7
+    value: "7"
   };
 
   constructor(private readonly step: WizardStepService) {
@@ -70,7 +70,7 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
     ]);
     this.gradePerBand = this.step.getItem(this.gradePerBandStateKey, {
       text: 'Number of grades per band',
-      value: null
+      value: "2"
     });
   }
 
@@ -78,20 +78,28 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
     this.revalidate();
   }
 
-  removeTrack(index) {
+  removeTrack(index: number): void {
     this.organizationCareerTracks.splice(index, 1);
   }
 
-  addBand() {
+  addBand(): void {
     this.bands.push({ ...this.bandChip });
   }
 
-  removeBand(index) {
+  hideRemoveButton(): boolean {
+    return this.bands.length === 1;
+  }
+
+  removeBand(index: number): void {
     this.bands.splice(index, 1);
   }
 
-  gradeTypeChange(event) {
-    this.gradeType = event.target.value;
+  gradeTypeChange(event: MouseEvent): void {
+    let value: string = (event.target as HTMLInputElement).value;
+    if (value === 'non-custom' && this.bands.length > 1) {
+      this.bands.splice(1);
+    }
+    this.gradeType = value;
   }
 
   revalidate(): void {

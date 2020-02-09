@@ -4,7 +4,7 @@
       <label class="term-title">{{ organizationCareerTracksHeading }}</label>
     </dt>
     <dd class="input chip" *ngFor="let track of organizationCareerTracks; let i = index;">
-      <input type="text" [value]="track" disabled />
+      <label>{{ track }}</label>
       <div class="overlay">
         <button type="button" (click)="removeTrack(i)">
           <fa-icon [icon]="faTrash"></fa-icon>
@@ -35,21 +35,50 @@
         </div>
       </div>
       <dd class="input chip">
-        <label>{{ gradeCoding.text }}</label>
+        <label for="grade-coding">{{ gradeCoding.text }}</label>
+        <span class="input-group border">
+          <input id="grade-coding"
+            name="grade-coding"
+            class="value"
+            type="text"
+            autocomplete="off"
+            (input)="revalidate()"
+            [(ngModel)]="gradeCoding.value" />
+        </span>
       </dd>
       <div *ngFor="let band of bands; let i = index;">
         <p *ngIf="gradeType === 'custom'" class="title-copy title-copy-6">{{ cusomGradeBandLabel + (i + 1) }}</p>
         <dd class="input chip">
-          <label required>{{ band.text }}</label>
-          <div *ngIf="gradeType === 'custom'" class="overlay">
+          <label class="required" [for]="'band-' + (i + 1)">{{ band.text }}</label>
+          <div *ngIf="gradeType === 'custom'" class="overlay" [class.hidden]="hideRemoveButton()">
             <button type="button" (click)="removeBand(i)">
               <fa-icon [icon]="faTrash"></fa-icon>
             </button>
           </div>
+          <span class="input-group border">
+            <input required
+              [id]="'band-' + (i + 1)"
+              [name]="'band-' + (i + 1)"
+              class="value"
+              type="text"
+              autocomplete="off"
+              (input)="revalidate()"
+              [(ngModel)]="band.value" />
+          </span>
         </dd>
       </div>
       <dd *ngIf="gradeType === 'non-custom'" class="input chip">
-        <label required>{{ gradePerBand.text }}</label>
+        <label class="required" for="per-band">{{ gradePerBand.text }}</label>
+        <span class="input-group border">
+          <input required
+            id="per-band"
+            name="per-band"
+            class="value"
+            type="text"
+            autocomplete="off"
+            (input)="revalidate()"
+            [(ngModel)]="gradePerBand.value" />
+        </span>
       </dd>
       <div *ngIf="gradeType === 'custom'"
         class="add-item"

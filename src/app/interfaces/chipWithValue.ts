@@ -1,5 +1,4 @@
-import { Chip } from './chip';
-
-export interface ChipWithValue extends Chip {
+export interface ChipWithValue {
+  text: string;
   value: number;
 }

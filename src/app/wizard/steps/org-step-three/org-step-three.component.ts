@@ -10,7 +10,6 @@ import { NgForm } from '@angular/forms';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { WizardStepService } from '../../wizardStepService';
 import { ChipWithValue } from '../../../interfaces';
-import { Chip } from '../../../interfaces/chip';
 
 @Component({
   selector: 'ren-org-step-three',
@@ -19,32 +18,37 @@ import { Chip } from '../../../interfaces/chip';
 })
 export class OrgStepThreeComponent implements OnInit, AfterViewInit {
   organizationCareerTracksHeading = 'Organization\'s career tracks';
-  organizationCareerTracks: Chip[];
+  organizationCareerTracks: string[];
   addCareerTrackText = 'Add career track';
 
   setupBandsAndGradesHeading = 'Set Up Bands and Grades';
-  gradeRadios: string[] = [ 'Grade per band', 'Custom grade' ];
   faTrash = faTrash;
 
-  gradePerBand: ChipWithValue[];
+  gradeType: string;
+  gradeRadios: string[] = [ 'Grade per band', 'Custom grade' ];
+
+  gradeCoding: ChipWithValue;
+  gradePerBand: ChipWithValue;
+  bands: ChipWithValue[];
 
   cusomGradeBandLabel = 'Band ';
-  customGrade: ChipWithValue[];
   addBandText = 'Add band';
 
   @Output() readonly isValid: EventEmitter<boolean> = new EventEmitter();
   @ViewChild('admissionForm', { static: false }) theForm: NgForm;
 
+
   private readonly organizationCareerTracksStateKey: string = 'organizationCareerTracks';
+  private readonly gradeTypeStateKey: string = 'gradeType';
+  private readonly gradeCodingStateKey: string = 'gradeCoding';
   private readonly gradePerBandStateKey: string = 'gradePerBand';
-  private readonly customGradeStateKey: string = 'customGrade';
+  private readonly bandsStateKey: string = 'bands';
 
-  private readonly organizationCareerTracksMock: Chip[] = [
-    { text: 'Individual Contributor' },
-    { text: 'Managerial' }
+  private readonly organizationCareerTracksMock: string[] = [
+    'Individual Contributor',
+    'Managerial'
   ];
-
-  private readonly numberOfBandsChip: ChipWithValue = {
+  private readonly bandChip: ChipWithValue = {
     text: 'Number of bands',
     value: 7
   };
@@ -56,25 +60,38 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
     this.organizationCareerTracks = this.step.getItem(this.organizationCareerTracksStateKey, [
       ...this.organizationCareerTracksMock
     ]);
-    this.gradePerBand = this.step.getItem(this.gradePerBandStateKey, [
-      {
-        name: 'Grade coding',
-        value: null
-      },
-      { ...this.numberOfBandsChip },
-      {
-        name: 'Number of grades per band',
-        value: 2
-      }
+    this.gradeType = this.step.getItem(this.gradeTypeStateKey, 'non-custom');
+    this.gradeCoding = this.step.getItem(this.gradeCodingStateKey, {
+      text: 'Grade coding',
+      value: null
+    });
+    this.bands = this.step.getItem(this.bandsStateKey, [
+      { ...this.bandChip }
     ]);
-    this.customGrade = this.step.getItem(this.customGradeStateKey, [
-      { ...this.numberOfBandsChip },
-      { ...this.numberOfBandsChip }
-    ]);
+    this.gradePerBand = this.step.getItem(this.gradePerBandStateKey, {
+      text: 'Number of grades per band',
+      value: null
+    });
   }
 
   ngAfterViewInit() {
     this.revalidate();
+  }
+
+  removeTrack(index) {
+    this.organizationCareerTracks.splice(index, 1);
+  }
+
+  addBand() {
+    this.bands.push({ ...this.bandChip });
+  }
+
+  removeBand(index) {
+    this.bands.splice(index, 1);
+  }
+
+  gradeTypeChange(event) {
+    this.gradeType = event.target.value;
   }
 
   revalidate(): void {
@@ -83,7 +100,9 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
 
   saveState(): void {
     this.step.setItem(this.organizationCareerTracksStateKey, this.organizationCareerTracks);
+    this.step.setItem(this.gradeTypeStateKey, this.gradeType);
+    this.step.setItem(this.gradeCodingStateKey, this.gradeCoding);
+    this.step.setItem(this.bandsStateKey, this.bands);
     this.step.setItem(this.gradePerBandStateKey, this.gradePerBand);
-    this.step.setItem(this.customGradeStateKey, this.customGrade);
   }
 }

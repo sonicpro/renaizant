@@ -3,19 +3,15 @@
     <dt>
       <label class="term-title">{{ organizationCareerTracksHeading }}</label>
     </dt>
-    <dd class="input chip" *ngFor="let track of organizationCareerTracks">
-      <input
-        autocomplete="off"
-        type="text"
-        [value]="track.text"
-        disabled />
-        <div class="overlay">
-          <button type="button">
-            <fa-icon [icon]="faTrash"></fa-icon>
-          </button>
-        </div>
+    <dd class="input chip" *ngFor="let track of organizationCareerTracks; let i = index;">
+      <input type="text" [value]="track" disabled />
+      <div class="overlay">
+        <button type="button" (click)="removeTrack(i)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </div>
     </dd>
-    <div class="add-item">
+    <div class="add-item disabled">
       <div class="button-container">
         <div class="icon">
           <div class="combined-shape">
@@ -28,10 +24,36 @@
       <dt>
         <label class="term-title">{{ setupBandsAndGradesHeading }}</label>
       </dt>
-      <dd>
-
+      <div class="radio-group">
+        <div class=float-block>
+          <input type="radio" name="grade-types" id="grade-per-band" value="non-custom" (change)="gradeTypeChange($event)" [checked]="gradeType === 'non-custom'" />
+          <label for="grade-per-band">{{ gradeRadios[0] }}</label>
+        </div>
+        <div class=float-block>
+          <input type="radio" name="grade-types" id="custom-grade" value="custom" (change)="gradeTypeChange($event)" [checked]="gradeType === 'custom'" />
+          <label for="custom-grade">{{ gradeRadios[1] }}</label>
+        </div>
+      </div>
+      <dd class="input chip">
+        <label>{{ gradeCoding.text }}</label>
       </dd>
-      <div class="add-item">
+      <div *ngFor="let band of bands; let i = index;">
+        <p *ngIf="gradeType === 'custom'" class="title-copy title-copy-6">{{ cusomGradeBandLabel + (i + 1) }}</p>
+        <dd class="input chip">
+          <label required>{{ band.text }}</label>
+          <div *ngIf="gradeType === 'custom'" class="overlay">
+            <button type="button" (click)="removeBand(i)">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </div>
+        </dd>
+      </div>
+      <dd *ngIf="gradeType === 'non-custom'" class="input chip">
+        <label required>{{ gradePerBand.text }}</label>
+      </dd>
+      <div *ngIf="gradeType === 'custom'"
+        class="add-item"
+        (click)="addBand()">
         <div class="button-container">
           <div class="icon">
             <div class="combined-shape">

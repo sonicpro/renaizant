@@ -32,7 +32,7 @@ export class WizardStepService {
   ];
 
   constructor(
-    private stepIndex = 0,
+    private stepIndex = 2,
     private isCompleted = false
   ) { }
 

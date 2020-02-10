@@ -308,9 +308,21 @@
         float: left;
 
         input {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        
+          border-radius: 50%;
           width: 16px;
           height: 16px;
+        
+          border: 2px solid #969696;
+          transition: 0.2s all linear;
           margin: 5px 0;
+        }
+        
+        input:checked {
+          border: 5px solid #648CDC;
         }
 
         label {

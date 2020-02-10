@@ -103,7 +103,7 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
   }
 
   revalidate(): void {
-    this.isValid.emit(!this.theForm.valid);
+    this.isValid.emit(this.theForm.valid);
   }
 
   saveState(): void {

@@ -207,6 +207,8 @@
         height: 16px;
         margin-top: 5px;
         padding: 2px 2px;
+        box-sizing: border-box;
+        cursor: pointer;
 
         .close-icon {
           height: 100%;

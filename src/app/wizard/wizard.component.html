@@ -21,6 +21,6 @@
   <div class="card-footer">
     <button type="button" class="button primary" (click)="advance()" [disabled]="!nextIsEnabled">{{ step.getNextButtonText() | uppercase }}</button>
     <button type="button" class="button" (click)="retreat()" *ngIf="step.hasBackButton()">{{ step.getBackButtonText() | uppercase }}</button>
-    <button type="button" class="button skip" *ngIf="step.allowSkipOver()">{{ step.getSkipButtonText() | uppercase }}</button>
+    <button type="button" class="button skip" (click)="advance()" *ngIf="step.allowSkipOver()">{{ step.getSkipButtonText() | uppercase }}</button>
   </div>
 </div>

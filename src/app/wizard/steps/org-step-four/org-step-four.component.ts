@@ -16,7 +16,7 @@ import { WizardStepService } from '../../wizardStepService';
 export class OrgStepFourComponent implements OnInit, AfterViewInit {
   faTrash = faTrash;
   departmentListHeading = 'Department list';
-  departmentNameHint = 'Enter departmnetn name';
+  departmentNameHint = 'Enter department name';
   teamListHeading = 'Team list';
   teamNameHint = 'Enter team name';
   addDepartmentButtonText = 'Add department';
@@ -64,17 +64,16 @@ export class OrgStepFourComponent implements OnInit, AfterViewInit {
     this.teams.splice(index, 1);
   }
 
-  validateInput(event: FocusEvent, container: string[]): void {
-    let element = event.target as HTMLInputElement;
-    if (element.value) {
-      container.push(element.value);
-      element.value = null;
-      if (container === this.teams) {
-        this.showTeamInput = false;
-      } else {
-        this.showDepartmentInput = false;
-      }
+  onKeyup(event: KeyboardEvent, container: string[]): void {
+    if (event.keyCode === 13) {
+      this.validateInput(event, container);
+    } else if (event.keyCode === 27) {
+      this.validateInput(event, container, true);
     }
+  }
+
+  onBlur(event: FocusEvent, container: string[]): void {
+    this.validateInput(event, container);
   }
 
   stylePlaceholder(event: KeyboardEvent): void {
@@ -96,6 +95,21 @@ export class OrgStepFourComponent implements OnInit, AfterViewInit {
     this.step.setItem(this.departmentListStateKey, this.departments);
     this.step.setItem(this.teamListStateKey, this.teams);
     this.step.setItem(this.departmentInputStateKey, this.showDepartmentInput);
-    this.step.setItem(this.teamInputStateKey, this.teams);
+    this.step.setItem(this.teamInputStateKey, this.showTeamInput);
+  }
+
+  private validateInput(event: UIEvent, container: string[], exitGracefully: boolean = false) {
+    let element = event.target as HTMLInputElement;
+    if (element.value) {
+      if (!exitGracefully) {
+        container.push(element.value);
+      }
+      element.value = null;
+      if (container === this.teams) {
+        this.showTeamInput = false;
+      } else {
+        this.showDepartmentInput = false;
+      }
+    }
   }
 }

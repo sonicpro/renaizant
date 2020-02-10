@@ -15,10 +15,12 @@
       <input type="text"
         class="greyed-out"
         autocomplete="off"
-        (blur)="validateInput($event, departments)"
+        (blur)="onBlur($event, departments)"
+        (keyup)="onKeyup($event, departments)"
         [placeholder]="departmentNameHint"
         (input)="stylePlaceholder($event)" />
-        <div class="button-container">
+        <div class="button-container"
+          (click)="showDepartmentInput=false">
           <div class="close-icon">
             <div class="combined-shape">
             </div>
@@ -51,10 +53,12 @@
       <input type="text"
         class="greyed-out"
         autocomplete="off"
-        (blur)="validateInput($event, teams)"
+        (blur)="onBlur($event, teams)"
+        (keyup)="onKeyup($event, teams)"
         [placeholder]="teamNameHint"
         (input)="stylePlaceholder($event)" />
-        <div class="button-container">
+        <div class="button-container"
+          (click)="showTeamInput=false">
           <div class="close-icon">
             <div class="combined-shape">
             </div>

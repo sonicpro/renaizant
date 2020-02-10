@@ -1,0 +1,76 @@
+<div class="card-body">
+  <dl>
+    <dt>
+      <label class="term-title">{{ departmentListHeading }}</label>
+    </dt>
+    <dd class="input chip" *ngFor="let department of departments; let i = index;">
+      <label>{{ department }}</label>
+      <div class="overlay">
+        <button type="button" (click)="removeDepartment(i)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </div>
+    </dd>
+    <dd class="input transitional-input" *ngIf="showDepartmentInput">
+      <input type="text"
+        class="greyed-out"
+        autocomplete="off"
+        (blur)="validateInput($event, departments)"
+        [placeholder]="departmentNameHint"
+        (input)="stylePlaceholder($event)" />
+        <div class="button-container">
+          <div class="close-icon">
+            <div class="combined-shape">
+            </div>
+          </div>
+        </div>
+    </dd>
+    <div class="add-item"
+      [class.disabled]="showDepartmentInput"
+      (click)="showDepartmentInput=true">
+      <div class="button-container">
+        <div class="icon">
+          <div class="combined-shape">
+          </div>
+        </div>
+        {{ addDepartmentButtonText }}
+      </div>
+    </div>
+    <dt>
+      <label class="term-title">{{ teamListHeading }}</label>
+    </dt>
+    <dd class="input chip" *ngFor="let team of teams; let i = index;">
+      <label>{{ team }}</label>
+      <div class="overlay">
+        <button type="button" (click)="removeTeam(i)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </div>
+    </dd>
+    <dd class="input transitional-input" *ngIf="showTeamInput">
+      <input type="text"
+        class="greyed-out"
+        autocomplete="off"
+        (blur)="validateInput($event, teams)"
+        [placeholder]="teamNameHint"
+        (input)="stylePlaceholder($event)" />
+        <div class="button-container">
+          <div class="close-icon">
+            <div class="combined-shape">
+            </div>
+          </div>
+        </div>
+    </dd>
+    <div class="add-item"
+      [class.disabled]="showTeamInput"
+      (click)="showTeamInput=true">
+      <div class="button-container">
+        <div class="icon">
+          <div class="combined-shape">
+          </div>
+        </div>
+        {{ addTeamButtonText }}
+      </div>
+    </div>
+  </dl>
+</div>

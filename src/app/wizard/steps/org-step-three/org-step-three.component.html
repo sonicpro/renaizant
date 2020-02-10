@@ -46,7 +46,7 @@
             [(ngModel)]="gradeCoding.value" />
         </span>
       </dd>
-      <div *ngFor="let band of bands; let i = index;">
+      <div class="chip-container" *ngFor="let band of bands; let i = index;">
         <p *ngIf="gradeType === 'custom'" class="title-copy title-copy-6">{{ cusomGradeBandLabel + (i + 1) }}</p>
         <dd class="input chip">
           <label class="required" [for]="'band-' + (i + 1)">{{ band.text }}</label>

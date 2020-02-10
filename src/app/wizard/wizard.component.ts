@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WizardStepService } from './wizardStepService';
-import { OrgStepOneComponent, OrgStepTwoComponent, OrgStepThreeComponent } from './steps';
+import {
+  OrgStepOneComponent,
+  OrgStepTwoComponent,
+  OrgStepThreeComponent,
+  OrgStepFourComponent
+} from './steps';
 
 @Component({
   selector: 'ren-wizard',
@@ -19,6 +24,8 @@ export class WizardComponent implements OnInit {
   private readonly stepTwo: OrgStepTwoComponent;
   @ViewChild(OrgStepThreeComponent, { static: false })
   private readonly stepThree: OrgStepThreeComponent;
+  @ViewChild(OrgStepFourComponent, { static: false })
+  private readonly stepFour: OrgStepFourComponent;
 
   constructor(step: WizardStepService) {
     this.step = step;
@@ -46,6 +53,10 @@ export class WizardComponent implements OnInit {
         this.stepThree.saveState();
         this.step.advance();
         break;
+      case 3:
+        this.stepFour.saveState();
+        this.step.advance();
+        break;
       default:
         this.step.advance();
     }
@@ -59,6 +70,10 @@ export class WizardComponent implements OnInit {
         break;
       case 2:
         this.stepThree.saveState();
+        this.step.retreat();
+        break;
+      case 3:
+        this.stepFour.saveState();
         this.step.retreat();
         break;
       default:

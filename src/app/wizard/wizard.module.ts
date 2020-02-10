@@ -9,6 +9,7 @@ import { OrgStepOneComponent } from './steps/org-step-one/org-step-one.component
 import { OrgStepTwoComponent } from './steps/org-step-two/org-step-two.component';
 import { OrgStepThreeComponent } from './steps/org-step-three/org-step-three.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OrgStepFourComponent } from './steps/org-step-four/org-step-four.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CompletionBadgeComponent,
     OrgStepOneComponent,
     OrgStepTwoComponent,
-    OrgStepThreeComponent
+    OrgStepThreeComponent,
+    OrgStepFourComponent
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,5 @@
+import { ChipWithValue } from '../interfaces';
+
 export interface StepState {
-  [index: string]: any;
+  [index: string]: string | string[] | number | boolean | ChipWithValue | ChipWithValue[];
 }

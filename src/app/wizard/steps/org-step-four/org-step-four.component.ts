@@ -80,7 +80,6 @@ export class OrgStepFourComponent implements OnInit, AfterViewInit {
         this.validateInput(event, container, true);
         break;
       default:
-        break;
     }
   }
 

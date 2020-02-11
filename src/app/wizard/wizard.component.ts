@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, AfterViewChecked, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { WizardStepService } from './wizardStepService';
 import { WizardViewModel } from '../viewModels/wizard-view-model';
 
@@ -24,16 +25,15 @@ export class WizardComponent implements OnInit, AfterViewInit, AfterViewChecked 
   readonly backButtonText = 'Back';
   skipIsAllowed: boolean;
   readonly skipLinkText = 'Skip this step';
-
-  private readonly step: WizardStepService;
+  proceedToCompletionPage = false;
+  isUserOnboarding = false;
 
   @ViewChild(OrgStepOneComponent, { static: false }) private readonly stepOne: OrgStepOneComponent;
   @ViewChild(OrgStepTwoComponent, { static: false }) private readonly stepTwo: OrgStepTwoComponent;
   @ViewChild(OrgStepThreeComponent, { static: false }) private readonly stepThree: OrgStepThreeComponent;
   @ViewChild(OrgStepFourComponent, { static: false }) private readonly stepFour: OrgStepFourComponent;
 
-  constructor(step: WizardStepService) {
-    this.step = step;
+  constructor(private readonly step: WizardStepService, private readonly route: ActivatedRoute) {
   }
 
   isCurrentStep(index: number): boolean {
@@ -42,6 +42,7 @@ export class WizardComponent implements OnInit, AfterViewInit, AfterViewChecked 
 
   ngOnInit(): void {
     this.markers = new Array(this.step.getNumberOfSteps());
+    this.isUserOnboarding = !!(this.route.snapshot.paramMap.get('isUserOnboarding') === 'true');
   }
 
   ngAfterViewInit(): void {
@@ -81,6 +82,7 @@ export class WizardComponent implements OnInit, AfterViewInit, AfterViewChecked 
       default:
         this.step.advance();
     }
+    this.proceedToCompletionPage = this.step.stepIsTheLastOne();
   }
 
   retreat(): void {

@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { UserOnboardingLandingPageComponent } from './user-onboarding-landing-page/user-onboarding-landing-page.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
+  { path: 'companyRoute/:onboardingIsCompleted', redirectTo: '', component: LandingPageComponent },
+  { path: 'userRoute', component: UserOnboardingLandingPageComponent },
   {
-    path: 'wizard', loadChildren: () => import('./wizard/wizard.module')
+    path: 'wizard/:isUserOnboarding', loadChildren: () => import('./wizard/wizard.module')
       .then(m => m.WizardModule)
-  }
+  },
+  { path: '', component: LandingPageComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

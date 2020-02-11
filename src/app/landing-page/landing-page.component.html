@@ -1,5 +1,10 @@
 <div class="card">
   <div [innerHTML]="text"></div>
   <div class="title">{{ title }}</div>
-  <button type="button" class="start" routerLink="/wizard">{{ inputValue }}</button>
+  <button type="button"
+    *ngIf="!onboardingIsCompleted"
+    class="start"
+    routerLink="/wizard/{{ isUserOnboarding }}">
+    {{ inputValue }}
+  </button>
 </div>

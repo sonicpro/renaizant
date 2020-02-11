@@ -1,3 +1,5 @@
+import { ChipWithValue } from '../interfaces';
+
 export class WizardStepService {
   private readonly numberOfSteps = 4;
   // TODO - get the array length in sync with "numberOfSteps" field.
@@ -19,6 +21,10 @@ export class WizardStepService {
 
   stepIsNotTheFirst(): boolean {
     return this.stepIndex !== 0;
+  }
+
+  stepIsTheLastOne(): boolean {
+    return this.stepIndex === this.numberOfSteps - 1;
   }
 
   advance(): void {
@@ -45,7 +51,7 @@ export class WizardStepService {
     return this.isUserRoute;
   }
 
-  getItem(key: string, defaultValue: any = null) {
+  getItem(key: string, defaultValue: string | string[] | number | boolean | ChipWithValue | ChipWithValue[] = null) {
     if (key in this.stepStates[this.stepIndex]) {
       return this.stepStates[this.stepIndex][key];
     } else {
@@ -53,7 +59,7 @@ export class WizardStepService {
     }
   }
 
-  setItem(key: string, value: any) {
+  setItem(key: string, value: string | string[] | number | boolean | ChipWithValue | ChipWithValue[]) {
     this.stepStates[this.stepIndex][key] = value;
   }
 

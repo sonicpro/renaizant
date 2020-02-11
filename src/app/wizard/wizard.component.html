@@ -19,8 +19,26 @@
   <ren-org-step-three *ngIf="isCurrentStep(2)" (isValid)="setButtonState($event)"></ren-org-step-three>
   <ren-org-step-four *ngIf="isCurrentStep(3)" (isValid)="setButtonState($event)"></ren-org-step-four>
   <div class="card-footer">
-    <button type="button" class="button primary" (click)="advance()" [disabled]="!nextIsEnabled">{{ nextButtonText | uppercase }}</button>
+    <button type="button"
+      *ngIf="!proceedToCompletionPage"
+      class="button primary"
+      (click)="advance()"
+      [disabled]="!nextIsEnabled">
+      {{ nextButtonText | uppercase }}
+    </button>
+    <button type="button"
+      *ngIf="proceedToCompletionPage && !isUserOnboarding"
+      class="button primary"
+      routerLink="/userRoute">
+      {{ nextButtonText | uppercase }}
+    </button>
+    <button type="button"
+      *ngIf="proceedToCompletionPage && isUserOnboarding"
+      class="button primary"
+      routerLink="/companyRoute/{{ proceedToCompletionPage }}">
+      {{ nextButtonText | uppercase }}
+    </button>
     <button type="button" class="button" (click)="retreat()" *ngIf="isBackButtonVisible">{{ backButtonText | uppercase }}</button>
-    <button type="button" class="button skip" (click)="advance()" *ngIf="skipIsAllowed">{{ skipLinkText | uppercase }}</button>
+    <button type="button" class="button skip" (click)="advance()" *ngIf="skipIsAllowed">{{ skipLinkText | uppercase }}</button>    
   </div>
 </div>

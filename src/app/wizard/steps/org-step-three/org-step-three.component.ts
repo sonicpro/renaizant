@@ -9,6 +9,7 @@ import {
 import { NgForm } from '@angular/forms';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { WizardStepService } from '../../wizardStepService';
+import { WizardViewModel } from '../../../viewModels/wizard-view-model';
 import { ChipWithValue } from '../../../interfaces';
 
 @Component({
@@ -17,6 +18,13 @@ import { ChipWithValue } from '../../../interfaces';
   styleUrls: ['../org-step.component.scss']
 })
 export class OrgStepThreeComponent implements OnInit, AfterViewInit {
+  readonly wizardViewData: WizardViewModel = new WizardViewModel(
+    'Set up organization Career Path',
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+    'Next',
+    true
+  );
   organizationCareerTracksHeading = 'Organization\'s career tracks';
   organizationCareerTracks: string[];
   addCareerTrackText = 'Add career track';
@@ -50,7 +58,7 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
   ];
   private readonly bandChip: ChipWithValue = {
     text: 'Number of bands',
-    value: "7"
+    value: '7'
   };
 
   constructor(private readonly step: WizardStepService) {
@@ -70,7 +78,7 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
     ]);
     this.gradePerBand = this.step.getItem(this.gradePerBandStateKey, {
       text: 'Number of grades per band',
-      value: "2"
+      value: '2'
     });
   }
 
@@ -95,7 +103,7 @@ export class OrgStepThreeComponent implements OnInit, AfterViewInit {
   }
 
   gradeTypeChange(event: MouseEvent): void {
-    let value: string = (event.target as HTMLInputElement).value;
+    const value: string = (event.target as HTMLInputElement).value;
     if (value === 'non-custom' && this.bands.length > 1) {
       this.bands.splice(1);
     }

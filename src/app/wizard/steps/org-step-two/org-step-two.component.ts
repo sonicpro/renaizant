@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { WizardStepService } from '../../wizardStepService';
+import { WizardViewModel } from '../../../viewModels/wizard-view-model';
 import { Option } from '../../../interfaces';
 
 @Component({
@@ -16,6 +17,12 @@ import { Option } from '../../../interfaces';
   styleUrls: ['../org-step.component.scss']
 })
 export class OrgStepTwoComponent implements OnInit, AfterViewInit {
+  readonly wizardViewData: WizardViewModel = new WizardViewModel(
+    'Fill in the organization description',
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+    'Next'
+  );
   organizationName: string;
   organizationNameLabel = 'Organization Name';
   organizationNameHint = 'Enter organization name';

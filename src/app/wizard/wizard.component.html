@@ -5,22 +5,22 @@
 <div class="progress left"></div>
 <div class="wizard-card-modal">
   <div class="card-header">
-    <div class="header-title">{{ step.getStepName() }}</div>
+    <div class="header-title">{{ stepHeaderTitle }}</div>
     <div class="header-gauge">
       <div *ngFor="let m of markers, let i = index">
         <div class="marker" [class.set]="isCurrentStep(i)"></div>
         <div class="line" *ngIf="markers.length !== i + 1"></div>
       </div>
     </div>
-    <div class="header-text">{{ step.getHeaderText() }}</div>
+    <div class="header-text">{{ stepHeaderText }}</div>
   </div>
-  <ren-org-step-one *ngIf="step.getStepIndex() === 0" (isValid)="setButtonState($event)"></ren-org-step-one>
-  <ren-org-step-two *ngIf="step.getStepIndex() === 1" (isValid)="setButtonState($event)"></ren-org-step-two>
-  <ren-org-step-three *ngIf="step.getStepIndex() === 2" (isValid)="setButtonState($event)"></ren-org-step-three>
-  <ren-org-step-four *ngIf="step.getStepIndex() === 3" (isValid)="setButtonState($event)"></ren-org-step-four>
+  <ren-org-step-one *ngIf="isCurrentStep(0)" (isValid)="setButtonState($event)"></ren-org-step-one>
+  <ren-org-step-two *ngIf="isCurrentStep(1)" (isValid)="setButtonState($event)"></ren-org-step-two>
+  <ren-org-step-three *ngIf="isCurrentStep(2)" (isValid)="setButtonState($event)"></ren-org-step-three>
+  <ren-org-step-four *ngIf="isCurrentStep(3)" (isValid)="setButtonState($event)"></ren-org-step-four>
   <div class="card-footer">
-    <button type="button" class="button primary" (click)="advance()" [disabled]="!nextIsEnabled">{{ step.getNextButtonText() | uppercase }}</button>
-    <button type="button" class="button" (click)="retreat()" *ngIf="step.hasBackButton()">{{ step.getBackButtonText() | uppercase }}</button>
-    <button type="button" class="button skip" (click)="advance()" *ngIf="step.allowSkipOver()">{{ step.getSkipButtonText() | uppercase }}</button>
+    <button type="button" class="button primary" (click)="advance()" [disabled]="!nextIsEnabled">{{ nextButtonText | uppercase }}</button>
+    <button type="button" class="button" (click)="retreat()" *ngIf="isBackButtonVisible">{{ backButtonText | uppercase }}</button>
+    <button type="button" class="button skip" (click)="advance()" *ngIf="skipIsAllowed">{{ skipLinkText | uppercase }}</button>
   </div>
 </div>

@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { WizardStepService } from '../../wizardStepService';
+import { WizardViewModel } from '../../../viewModels/wizard-view-model';
 
 @Component({
   selector: 'ren-org-step-four',
@@ -14,6 +15,12 @@ import { WizardStepService } from '../../wizardStepService';
   styleUrls: ['../org-step.component.scss']
 })
 export class OrgStepFourComponent implements OnInit, AfterViewInit {
+  readonly wizardViewData: WizardViewModel = new WizardViewModel(
+    'Set up Organization Structure',
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+    'Finish'
+  );
   faTrash = faTrash;
   departmentListHeading = 'Department list';
   departmentNameHint = 'Enter department name';
@@ -25,6 +32,7 @@ export class OrgStepFourComponent implements OnInit, AfterViewInit {
   teams: string[];
   showDepartmentInput: boolean;
   showTeamInput: boolean;
+  @Output() readonly isValid: EventEmitter<boolean> = new EventEmitter();
 
   private readonly departmentListMock: string[] = [
     'Management',
@@ -34,8 +42,6 @@ export class OrgStepFourComponent implements OnInit, AfterViewInit {
     'Renaizant',
     'Devs'
   ];
-
-  @Output() readonly isValid: EventEmitter<boolean> = new EventEmitter();
 
   private readonly departmentListStateKey = 'departmentList';
   private readonly teamListStateKey = 'teamList';
@@ -65,10 +71,16 @@ export class OrgStepFourComponent implements OnInit, AfterViewInit {
   }
 
   onKeyup(event: KeyboardEvent, container: string[]): void {
-    if (event.keyCode === 13) {
-      this.validateInput(event, container);
-    } else if (event.keyCode === 27) {
-      this.validateInput(event, container, true);
+    switch (event.key) {
+      case 'Enter':
+        this.validateInput(event, container);
+        break;
+      case 'Escape':
+      case 'Esc':       // IE/Edge specific value
+        this.validateInput(event, container, true);
+        break;
+      default:
+        break;
     }
   }
 
@@ -77,12 +89,11 @@ export class OrgStepFourComponent implements OnInit, AfterViewInit {
   }
 
   stylePlaceholder(event: KeyboardEvent): void {
-    let element = event.target as HTMLInputElement;
+    const element = event.target as HTMLInputElement;
     if (!element.value) {
-      element.classList.add("greyed-out");
-    }
-    else {
-      element.classList.remove("greyed-out");
+      element.classList.add('greyed-out');
+    } else {
+      element.classList.remove('greyed-out');
     }
   }
 
@@ -98,8 +109,8 @@ export class OrgStepFourComponent implements OnInit, AfterViewInit {
     this.step.setItem(this.teamInputStateKey, this.showTeamInput);
   }
 
-  private validateInput(event: UIEvent, container: string[], exitGracefully: boolean = false) {
-    let element = event.target as HTMLInputElement;
+  private validateInput(event: UIEvent, container: string[], exitGracefully = false) {
+    const element = event.target as HTMLInputElement;
     if (element.value) {
       if (!exitGracefully) {
         container.push(element.value);

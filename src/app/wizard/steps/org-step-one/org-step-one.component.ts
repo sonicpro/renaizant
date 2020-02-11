@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { WizardStepService } from '../../wizardStepService';
+import { WizardViewModel } from '../../../viewModels/wizard-view-model';
 
 @Component({
   selector: 'ren-org-step-one',
@@ -8,6 +9,12 @@ import { WizardStepService } from '../../wizardStepService';
   styleUrls: ['../org-step.component.scss']
 })
 export class OrgStepOneComponent implements OnInit, AfterViewInit {
+  readonly wizardViewData: WizardViewModel = new WizardViewModel(
+    'General settings',
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+    'Next'
+  );
   language: string;
   languages: string[] = [
     'English (US)',

@@ -1,35 +1,8 @@
-import { WizardViewModel } from '../viewModels/wizard-view-model';
-
 export class WizardStepService {
-  private readonly steps: WizardViewModel[] = [
-    ...[
-      new WizardViewModel(
-        'General settings',
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-        'Next'
-      ),
-      new WizardViewModel(
-        'Fill in the organization description',
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-        'Next'
-      ),
-      new WizardViewModel(
-        'Set up organization Career Path',
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-        'Next',
-        true
-      ),
-      new WizardViewModel(
-        'Set up Organization Structure',
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-        'Finish'
-      )
-    ]
-  ];
+  private readonly numberOfSteps = 4;
+  // TODO - get the array length in sync with "numberOfSteps" field.
+  private readonly stepStates: {}[] = [{}, {}, {}, {}];
+  private isUserRoute = false;
 
   constructor(
     private stepIndex = 0,
@@ -41,39 +14,15 @@ export class WizardStepService {
   }
 
   getNumberOfSteps(): number {
-    return this.steps.length;
+    return this.numberOfSteps;
   }
 
-  getStepName(): string {
-    return this.steps[this.stepIndex].stepName;
-  }
-
-  getHeaderText(): string {
-    return this.steps[this.stepIndex].headerText;
-  }
-
-  getNextButtonText(): string {
-    return this.steps[this.stepIndex].buttonText;
-  }
-
-  getBackButtonText(): string {
-    return 'Back';
-  }
-
-  getSkipButtonText(): string {
-    return 'Skip this step';
-  }
-
-  allowSkipOver(): boolean {
-    return this.steps[this.stepIndex].canBeSkipped;
-  }
-
-  hasBackButton(): boolean {
+  stepIsNotTheFirst(): boolean {
     return this.stepIndex !== 0;
   }
 
   advance(): void {
-    if (this.stepIndex !== this.steps.length - 1) {
+    if (this.stepIndex !== this.numberOfSteps - 1) {
       this.stepIndex++;
     } else if (!this.isCompleted) {
       this.isCompleted = true;
@@ -92,15 +41,23 @@ export class WizardStepService {
     return this.isCompleted;
   }
 
+  isUserOnboarding(): boolean {
+    return this.isUserRoute;
+  }
+
   getItem(key: string, defaultValue: any = null) {
-    if (key in this.steps[this.stepIndex].stepState) {
-      return this.steps[this.stepIndex].stepState[key];
+    if (key in this.stepStates[this.stepIndex]) {
+      return this.stepStates[this.stepIndex][key];
     } else {
       return defaultValue;
     }
   }
 
   setItem(key: string, value: any) {
-    this.steps[this.stepIndex].stepState[key] = value;
+    this.stepStates[this.stepIndex][key] = value;
+  }
+
+  switchToUserRoute() {
+    this.isUserRoute = true;
   }
 }

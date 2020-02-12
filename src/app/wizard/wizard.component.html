@@ -3,7 +3,7 @@
 </nav>
 <div class="progress"></div>
 <div class="progress left"></div>
-<div class="wizard-card-modal">
+<div class="wizard-card-modal" [class.user-onboarding-card]="isUserOnboarding">
   <div class="card-header">
     <div class="header-title">{{ stepHeaderTitle }}</div>
     <div class="header-gauge">
@@ -14,10 +14,18 @@
     </div>
     <div class="header-text">{{ stepHeaderText }}</div>
   </div>
-  <ren-org-step-one *ngIf="isCurrentStep(0)" (isValid)="setButtonState($event)"></ren-org-step-one>
-  <ren-org-step-two *ngIf="isCurrentStep(1)" (isValid)="setButtonState($event)"></ren-org-step-two>
-  <ren-org-step-three *ngIf="isCurrentStep(2)" (isValid)="setButtonState($event)"></ren-org-step-three>
-  <ren-org-step-four *ngIf="isCurrentStep(3)" (isValid)="setButtonState($event)"></ren-org-step-four>
+  <div *ngIf="!isUserOnboarding">
+    <ren-org-step-one *ngIf="isCurrentStep(0)" (isValid)="setButtonState($event)"></ren-org-step-one>
+    <ren-org-step-two *ngIf="isCurrentStep(1)" (isValid)="setButtonState($event)"></ren-org-step-two>
+    <ren-org-step-three *ngIf="isCurrentStep(2)" (isValid)="setButtonState($event)"></ren-org-step-three>
+    <ren-org-step-four *ngIf="isCurrentStep(3)" (isValid)="setButtonState($event)"></ren-org-step-four>
+  </div>
+  <div *ngIf="isUserOnboarding">
+    <ren-user-step-one *ngIf="isCurrentStep(0)" (isValid)="setButtonState($event)"></ren-user-step-one>
+    <ren-org-step-two *ngIf="isCurrentStep(1)" (isValid)="setButtonState($event)"></ren-org-step-two>
+    <ren-org-step-three *ngIf="isCurrentStep(2)" (isValid)="setButtonState($event)"></ren-org-step-three>
+    <ren-org-step-four *ngIf="isCurrentStep(3)" (isValid)="setButtonState($event)"></ren-org-step-four>
+  </div>
   <div class="card-footer">
     <button type="button"
       *ngIf="!proceedToCompletionPage"
@@ -39,6 +47,6 @@
       {{ nextButtonText | uppercase }}
     </button>
     <button type="button" class="button" (click)="retreat()" *ngIf="isBackButtonVisible">{{ backButtonText | uppercase }}</button>
-    <button type="button" class="button skip" (click)="advance()" *ngIf="skipIsAllowed">{{ skipLinkText | uppercase }}</button>    
+    <button type="button" class="button skip" (click)="advance()" *ngIf="skipIsAllowed">{{ skipLinkText | uppercase }}</button>
   </div>
 </div>

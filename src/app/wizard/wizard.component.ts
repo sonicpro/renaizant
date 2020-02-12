@@ -7,7 +7,8 @@ import {
   OrgStepOneComponent,
   OrgStepTwoComponent,
   OrgStepThreeComponent,
-  OrgStepFourComponent
+  OrgStepFourComponent,
+  UserStepOneComponent
 } from './steps';
 
 @Component({
@@ -32,6 +33,7 @@ export class WizardComponent implements OnInit, AfterViewInit, AfterViewChecked 
   @ViewChild(OrgStepTwoComponent, { static: false }) private readonly stepTwo: OrgStepTwoComponent;
   @ViewChild(OrgStepThreeComponent, { static: false }) private readonly stepThree: OrgStepThreeComponent;
   @ViewChild(OrgStepFourComponent, { static: false }) private readonly stepFour: OrgStepFourComponent;
+  @ViewChild(UserStepOneComponent, { static: false }) private readonly userStepOne: UserStepOneComponent;
 
   constructor(private readonly step: WizardStepService, private readonly route: ActivatedRoute) {
   }
@@ -50,7 +52,7 @@ export class WizardComponent implements OnInit, AfterViewInit, AfterViewChecked 
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      const viewData: WizardViewModel = this.stepOne.wizardViewData;
+      const viewData: WizardViewModel = this.isUserOnboarding ? this.userStepOne.wizardViewData : this.stepOne.wizardViewData;
       this.nextButtonText = viewData.buttonText;
       this.skipIsAllowed = viewData.canBeSkipped;
       this.stepHeaderTitle = viewData.stepName;
@@ -67,7 +69,11 @@ export class WizardComponent implements OnInit, AfterViewInit, AfterViewChecked 
   advance(): void {
     switch (this.step.getStepIndex()) {
       case 0:
-        this.stepOne.saveState();
+        if (this.isUserOnboarding) {
+          this.userStepOne.saveState();
+        } else {
+          this.stepOne.saveState();
+        }
         this.step.advance();
         break;
       case 1:
@@ -115,7 +121,11 @@ export class WizardComponent implements OnInit, AfterViewInit, AfterViewChecked 
     let viewData: WizardViewModel;
     switch (targetStepIndex) {
       case 0:
-        viewData = this.stepOne.wizardViewData;
+        if (this.isUserOnboarding) {
+          viewData = this.userStepOne.wizardViewData;
+        } else {
+          viewData = this.stepOne.wizardViewData;
+        }
         break;
       case 1:
         viewData = this.stepTwo.wizardViewData;

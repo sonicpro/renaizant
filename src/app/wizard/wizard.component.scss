@@ -44,7 +44,7 @@
   .card-header {
     box-sizing: border-box;
     height: 183px;
-    width: 564px;
+    width: 100%;
     padding: 24px 48px 32px;
     display: table;
     border-bottom: 1px solid #f0f0f0;
@@ -100,7 +100,7 @@
   .card-footer {
     box-sizing: border-box;
     height: 64px;
-    width: 564px;
+    width: 100%;
     border-radius: 0 0 4px 4px;
     background-color: #fafafa;
     padding: 16px;
@@ -141,5 +141,9 @@
     }
 
     @extend %clearfix;
+  }
+
+  &.user-onboarding-card {
+    width: 640px;
   }
 }

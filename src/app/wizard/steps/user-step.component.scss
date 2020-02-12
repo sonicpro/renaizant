@@ -91,97 +91,6 @@
         }
       }
 
-      &.chip {
-        border: none;
-        margin: 8px 0 0;
-        background-color: #fafafa;
-        position: relative;
-        display: flex;
-        cursor: pointer;
-
-        + .chip {
-          margin-top: 8px;
-        }
-
-        &:first-of-type {
-          margin-top: 16px;
-        }
-
-        &:hover {
-          background-color: #f0f0f0;
-
-          label + .overlay:not(.hidden) {
-            display: block;
-          }
-        }
-
-        label {
-          cursor: pointer;
-          flex: 1 0 auto;
-
-          &.required:after {
-            padding-left: 4px;
-            color: #dc1e50;
-            content: "*";
-          }
-
-          + .overlay {
-            position: absolute;
-            display: none;
-            height: 26px;
-            top: 7px;
-            left: 0;
-            width: 100%;
-            padding-right: 20px;
-            box-sizing: content-box;
-            background-color: rgba(0, 0, 0, 0);
-
-            button {
-              border: none;
-              padding: 0;
-              background: 0 0;
-              cursor: pointer;
-              color: #969696;
-              height: 16px;
-              width: 16px;
-              vertical-align: middle;
-              font-size: 12px;
-              position: absolute;
-              top: 3px;
-              right: 0;
-            }
-          }
-
-          ~ .input-group {
-            height: 32px;
-            width: 56px;
-            position: absolute;
-            top: 4px;
-            right: 4px;
-            background-color: #ffffff;
-
-            &.border {
-              box-sizing: border-box;
-              height: 32px;
-              width: 56px;
-              border: 1px solid #969696;
-              border-radius: 4px;
-            }
-
-            .value {
-              display: block;
-              margin: 1px auto;
-              height: 26px;
-              width: 29px;
-              color: #1e1e1e;
-              font-size: 16px;
-              line-height: 26px;
-              text-align: center;
-            }
-          }
-        }
-      }
-
       .dropdown-container {
         display: flex;
         justify-content: center;
@@ -228,68 +137,6 @@
           }
         }
       }
-
-      &.transitional-input {
-        display: flex;
-        padding-right: 12px;
-        margin: 8px 0 0;
-
-        input {
-          flex: 1 1 auto;
-        }
-      }
-    }
-
-    .chip-container {
-      dd.chip {
-        margin-top: 8px;
-      }
-    }
-
-    .add-item {
-      padding: 4px 8px 4px 8px;
-      margin: 16px 0 32px;
-      display: inline-block;
-      cursor: pointer;
-
-      .button-container {
-        padding: 2px 0 2px 24px;
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 12px;
-        vertical-align: middle;
-        position: relative;
-
-        .icon {
-          position: absolute;
-          left: 0;
-          top: 0;
-          height: 16px;
-          width: 16px;
-          background-color: #f0f0f0;
-          border-radius: 8px;
-
-          .combined-shape {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            height: 10px;
-            width: 10px;
-            border-radius: 1px;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0) 40%, #969696 40% 60%, rgba(0, 0, 0, 0) 60%),
-              linear-gradient(0deg, rgba(0, 0, 0, 0) 40%, #969696 40% 60%, rgba(0, 0, 0, 0) 60%);
-          }
-        }
-      }
-
-      &.disabled {
-        @include less-opaque;
-        cursor: auto;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
     }
 
     .description {
@@ -326,6 +173,10 @@
 
         + dd {
           margin-top: 8px;
+        }
+
+        &.title-asterisk {
+          font-weight: normal;
         }
       }
     }
@@ -378,7 +229,7 @@
     justify-content: space-between;
 
     dl {
-      flex: 0 0 218px;
+      flex: 0 0 256px;
 
       > dd {
         height: 40px;

@@ -10,6 +10,7 @@ import { OrgStepTwoComponent } from './steps/org-step-two/org-step-two.component
 import { OrgStepThreeComponent } from './steps/org-step-three/org-step-three.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OrgStepFourComponent } from './steps/org-step-four/org-step-four.component';
+import { UserStepOneComponent } from './steps/user-step-one/user-step-one.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OrgStepFourComponent } from './steps/org-step-four/org-step-four.compon
     OrgStepOneComponent,
     OrgStepTwoComponent,
     OrgStepThreeComponent,
-    OrgStepFourComponent
+    OrgStepFourComponent,
+    UserStepOneComponent
   ],
   imports: [
     CommonModule,

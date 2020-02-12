@@ -63,7 +63,12 @@ export class WizardStepService {
     this.stepStates[this.stepIndex][key] = value;
   }
 
-  switchToUserRoute() {
-    this.isUserRoute = true;
+  toggleRoute() {
+    for (let i in this.stepStates) {
+      this.stepStates[+i] = {};
+    }
+    this.stepIndex = 0;
+    this.isCompleted = false;
+    this.isUserRoute = !this.isUserRoute;
   }
 }

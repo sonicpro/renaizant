@@ -7,4 +7,5 @@
     routerLink="/wizard/{{ isUserOnboarding }}">
     {{ inputValue }}
   </button>
+  <button type="button" *ngIf="onboardingIsCompleted" class="start">{{ inputValue }}</button>
 </div>

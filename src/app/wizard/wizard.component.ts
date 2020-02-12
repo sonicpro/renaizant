@@ -42,7 +42,10 @@ export class WizardComponent implements OnInit, AfterViewInit, AfterViewChecked 
 
   ngOnInit(): void {
     this.markers = new Array(this.step.getNumberOfSteps());
-    this.isUserOnboarding = !!(this.route.snapshot.paramMap.get('isUserOnboarding') === 'true');
+    this.isUserOnboarding = this.route.snapshot.paramMap.get('isUserOnboarding') === 'true';
+    if (this.isUserOnboarding) {
+      this.step.toggleRoute();
+    }
   }
 
   ngAfterViewInit(): void {

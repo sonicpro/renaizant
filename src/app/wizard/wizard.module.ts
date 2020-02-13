@@ -11,6 +11,7 @@ import { OrgStepThreeComponent } from './steps/org-step-three/org-step-three.com
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OrgStepFourComponent } from './steps/org-step-four/org-step-four.component';
 import { UserStepOneComponent } from './steps/user-step-one/user-step-one.component';
+import { UserStepTwoComponent } from './steps/user-step-two/user-step-two.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UserStepOneComponent } from './steps/user-step-one/user-step-one.compon
     OrgStepTwoComponent,
     OrgStepThreeComponent,
     OrgStepFourComponent,
-    UserStepOneComponent
+    UserStepOneComponent,
+    UserStepTwoComponent
   ],
   imports: [
     CommonModule,

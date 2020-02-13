@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { UserOnboardingLandingPageComponent } from './user-onboarding-landing-page/user-onboarding-landing-page.component';
+import {
+  UserOnboardingLandingPageComponent
+} from './user-onboarding-landing-page/user-onboarding-landing-page.component';
 
 const routes: Routes = [
   { path: 'companyRoute/:onboardingIsCompleted', component: LandingPageComponent },

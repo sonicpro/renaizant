@@ -52,7 +52,8 @@ export class WizardComponent implements OnInit, AfterViewInit, AfterViewChecked 
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      const viewData: WizardViewModel = this.isUserOnboarding ? this.userStepOne.wizardViewData : this.stepOne.wizardViewData;
+      const viewData: WizardViewModel = this.isUserOnboarding ? this.userStepOne.wizardViewData :
+        this.stepOne.wizardViewData;
       this.nextButtonText = viewData.buttonText;
       this.skipIsAllowed = viewData.canBeSkipped;
       this.stepHeaderTitle = viewData.stepName;
@@ -121,11 +122,7 @@ export class WizardComponent implements OnInit, AfterViewInit, AfterViewChecked 
     let viewData: WizardViewModel;
     switch (targetStepIndex) {
       case 0:
-        if (this.isUserOnboarding) {
-          viewData = this.userStepOne.wizardViewData;
-        } else {
-          viewData = this.stepOne.wizardViewData;
-        }
+        this.isUserOnboarding ? viewData = this.userStepOne.wizardViewData : viewData = this.stepOne.wizardViewData;
         break;
       case 1:
         viewData = this.stepTwo.wizardViewData;

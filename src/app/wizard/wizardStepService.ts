@@ -1,4 +1,4 @@
-import { ChipWithValue } from '../interfaces';
+import { StateValue } from '../Types/stateValue';
 
 export class WizardStepService {
   private readonly numberOfSteps = 4;
@@ -51,7 +51,7 @@ export class WizardStepService {
     return this.isUserRoute;
   }
 
-  getItem(key: string, defaultValue: string | string[] | number | boolean | ChipWithValue | ChipWithValue[] = null) {
+  getItem(key: string, defaultValue: StateValue = null) {
     if (key in this.stepStates[this.stepIndex]) {
       return this.stepStates[this.stepIndex][key];
     } else {
@@ -59,13 +59,13 @@ export class WizardStepService {
     }
   }
 
-  setItem(key: string, value: string | string[] | number | boolean | ChipWithValue | ChipWithValue[]) {
+  setItem(key: string, value: StateValue) {
     this.stepStates[this.stepIndex][key] = value;
   }
 
   toggleRoute() {
-    for (let i in this.stepStates) {
-      this.stepStates[+i] = {};
+    for (let i = 0; i !== this.stepStates.length; i++) {
+      this.stepStates[i] = {};
     }
     this.stepIndex = 0;
     this.isCompleted = false;

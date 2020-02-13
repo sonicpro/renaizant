@@ -2,7 +2,7 @@
   <form #admissionForm="ngForm">
     <dl>
       <dt>
-        <label required for="language">{{ languageLabel }}</label>
+        <label class="required" for="language">{{ languageLabel }}</label>
       </dt>
       <dd>
         <div class="dropdown-container">
@@ -19,9 +19,9 @@
         </div>
       </dd>
       <dt>
-        <label required for="time-zone">{{ timeZonesLabel }}</label>
+        <label class="required" for="time-zone">{{ timeZonesLabel }}</label>
       </dt>
-      <dd class="last-in-group">
+      <dd>
         <div class="dropdown-container">
           <select [(ngModel)]="timeZone"
             id="time-zone"
@@ -40,7 +40,7 @@
     <div class="half-width-inputs">
       <dl>
         <dt>
-          <label required for="work-hours-start">{{ workHoursStartLabel }}</label>
+          <label class="required" for="work-hours-start">{{ workHoursStartLabel }}</label>
         </dt>
         <dd>
           <div class="dropdown-container">
@@ -59,7 +59,7 @@
       </dl>
       <dl>
         <dt>
-          <label required for="work-hours-end">{{ workHoursEndLabel }}</label>
+          <label class="required" for="work-hours-end">{{ workHoursEndLabel }}</label>
         </dt>
         <dd>
           <div class="dropdown-container">

@@ -2,7 +2,7 @@
   <form #admissionForm="ngForm">
     <dl>
       <dt>
-        <label required for="organization-name">{{ organizationNameLabel }}</label>
+        <label class="required" for="organization-name">{{ organizationNameLabel }}</label>
       </dt>
       <dd class="input">
         <input [(ngModel)]="organizationName"
@@ -16,7 +16,7 @@
           [class.greyed-out]="!organizationName" />
       </dd>
       <dt>
-        <label required for="industry">{{ industryLabel }}</label>
+        <label class="required" for="industry">{{ industryLabel }}</label>
       </dt>
       <dd>
         <div class="dropdown-container">
